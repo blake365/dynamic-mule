@@ -1,0 +1,181 @@
+<%- include("partials/header") %>
+
+    <div class="container pt-5">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="text-center">Create a new Project</h1>
+                <form action="/projects" method="POST">
+                    <label for="">Project Type</label>
+                    <div class="form-group">
+
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="project[type]" id="inlineRadio1" value="Residential">
+                            <label class="form-check-label" for="inlineRadio1">Residential</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="project[type]" id="inlineRadio2" value="Commercial">
+                            <label class="form-check-label" for="inlineRadio2">Commercial</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="project[type]" id="inlineRadio3" value="Art">
+                            <label class="form-check-label" for="inlineRadio3">Art</label>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="">Title</label>
+                            <input class="form-control" type="text" name="project[title]" placeholder="Project Title" id="">
+                        </div>
+                        <label for="">Main Image Link</label>
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="project[image]" placeholder="image url" id="">
+                        </div>
+
+                        <button class="btn btn-secondary btn-block mb-2" type="button" data-toggle="collapse" data-target="#collapseImages" aria-expanded="false" aria-controls="collapseImages">
+    Add More Images
+  </button>
+                        <div class="collapse" id="collapseImages">
+                            <div class="card card-body mb-2">
+                                <label for="">Additional Image Link 1</label>
+                                <div class="form-group">
+                                    <input class="form-control" type="text" name="project[image1]" placeholder="image url" id="">
+                                </div>
+                                <label for="">Additional Image Link 2</label>
+                                <div class="form-group">
+                                    <input class="form-control" type="text" name="project[image2]" placeholder="image url" id="">
+                                </div>
+                                <label for="">Additional Image Link 3</label>
+                                <div class="form-group">
+                                    <input class="form-control" type="text" name="project[image3]" placeholder="image url" id="">
+                                </div>
+                                <label for="">Additional Image Link 4</label>
+                                <div class="form-group">
+                                    <input class="form-control" type="text" name="project[image4]" placeholder="image url" id="">
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <label for="">Project Description Text</label>
+                        <div class="form-group">
+                            <textarea class="form-control" cols="20" rows="2" name="project[description]"></textarea>
+                        </div>
+                        <label for="">Project Details Text</label>
+                        <div class="form-group">
+
+                            <textarea class="form-control" cols="30" rows="6" name="project[details]"></textarea>
+                        </div>
+
+
+
+
+                        <button class="btn btn-info btn-block mb-2" type="button" data-toggle="collapse" data-target="#collapseProject" aria-expanded="true" aria-controls="collapseProject">
+    Add Additional Project Information (optional)
+  </button>
+                        <div class="collapse" id="collapseProject">
+                            <div class="card card-body mb-2">
+                                <label class="h5 text-center" for="">Project Info</label>
+                                <label for="">Project Address</label>
+                                <div class="form-row form-group">
+                                    <div class="col-5">
+                                        <input type="text" class="form-control" name="project[projAddressStreet]" placeholder="Street">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" class="form-control" name="project[projAddressCity]" placeholder="City">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" class="form-control" name="project[projAddressState]" placeholder="State">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" class="form-control" name="project[projAddressZip]" placeholder="Zip">
+                                    </div>
+                                </div>
+
+                                <label for="">Project Materials</label>
+                                <div class="form-row form-group">
+                                    <div class="col-6">
+                                        <input class="form-control" type="text" name="project[primaryMaterial]" placeholder="Primary" id=""> </div>
+                                    <div class="col-6">
+                                        <input class="form-control" type="text" name="project[secondaryMaterial]" placeholder="Secondary" id=""> </div>
+                                </div>
+
+                                <label for="">Project Timeline</label>
+                                <div class="form-row form-group">
+                                    <div class="col-6">
+                                        <input class="form-control" type="text" name="project[dateStarted]" placeholder="Date Started" id=""> </div>
+                                    <div class="col-6">
+                                        <input class="form-control" type="text" name="project[dateCompleted]" placeholder="Date Completed" id=""> </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="">Customer Reviews/comments</label>
+                                    <textarea class="form-control" cols="20" rows="3" name="project[customerReview]"></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="">Collaborators</label>
+                                    <input class="form-control" type="text" name="project[collaborators]" placeholder="Collaborators" id="">
+                                </div>
+                                <label for="">Project Finances</label>
+                                <div class="form-row form-group">
+                                    <div class="col-6">
+                                        <label for="">Cost</label>
+                                        <input class="form-control" type="text" name="project[cost]" placeholder="100.00" id=""> </div>
+                                    <div class="col-6">
+                                        <label for="">Price</label>
+                                        <input class="form-control" type="text" name="project[price]" placeholder="750.00" id=""> </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <button class="btn btn-info btn-block mb-2" type="button" data-toggle="collapse" data-target="#collapseClient" aria-expanded="true" aria-controls="collapseClient">
+    Add Client Information (optional)
+  </button>
+                        <div class="collapse" id="collapseClient">
+                            <div class="card card-body mb-2">
+                                <label class="h5 text-center" for="">Client Info</label>
+                                <label for="">Client Contact</label>
+                                <div class="form-row form-group">
+                                    <div class="col-4">
+                                        <input class="form-control" type="text" name="project[clientName]" placeholder="Name" id=""> </div>
+                                    <div class="col">
+                                        <input class="form-control" type="text" name="project[clientContactPhone]" placeholder="Phone" id=""> </div>
+                                    <div class="col">
+                                        <input class="form-control" type="text" name="project[clientContactEmail]" placeholder="Email" id=""> </div>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" type="text" name="project[clientWebsite]" placeholder="Website URL" id=""> </div>
+
+                                <label for="">Client Address</label>
+                                <div class="form-row form-group">
+                                    <div class="col-5">
+                                        <input type="text" class="form-control" name="project[clientAddressStreet]" placeholder="Street">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" class="form-control" name="project[clientAddressCity]" placeholder="City">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" class="form-control" name="project[clientAddressState]" placeholder="State">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" class="form-control" name="project[clientAddressZip]" placeholder="Zip">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row justify-content-center mt-5">
+                            <button class="btn btn-large btn-block btn-primary col-6" type="">Submit</button>
+                        </div>
+                    </div>
+
+
+                </form>
+                <a href="/projects">Go Back</a>
+            </div>
+        </div>
+    </div>
+
+
+    <%- include("partials/footer") %>

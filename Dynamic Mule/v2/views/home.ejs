@@ -1,0 +1,119 @@
+<%- include("partials/header") %>
+    <%- include("partials/logobar") %>
+
+        <!-- Projects - expandable sections -->
+        <div id="projectsCollapser" class="pt-5 mt-n4">
+            <div class="accordion" id="accordionExample">
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-center btn-lg" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Residential Furniture <span class="badge badge-secondary ml-1 p-2 float-right"><%= projects.reduce((acc, cur) => cur.type === "res" ? ++acc : acc, 0);%></span>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <div class="card-deck mx-1">
+                                <div class="row">
+                                    <% projects.forEach(function(project){ %>
+                                        <% if (project.type === "res"){ %>
+                                            <div class="col-12 col-md-4">
+                                                <div class="card">
+                                                    <img src="<%= project.image %>" class="card-img-top" alt="...">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">
+                                                            <%= project.title %>
+                                                        </h5>
+                                                        <p class="card-text">
+                                                            <%= project.description.substring(0,200) %>
+                                                        </p>
+                                                        <a class="btn btn-success btn-sm" href="/projects/<%= project._id%>">More Info</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <% }}); %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingTwo">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-center btn-lg" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Commercial Build-Outs<span class="badge badge-secondary ml-1 p-2 float-right"><%= projects.reduce((acc, cur) => cur.type === "comm" ? ++acc : acc, 0);%></span>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#headingTwo">
+                        <div class="card-body">
+                            <div class="card-deck mx-1">
+                                <div class="row">
+                                    <% projects.forEach(function(project){ %>
+                                        <% if (project.type === "comm"){ %>
+                                            <div class="col-12 col-md-4">
+                                                <div class="card">
+                                                    <img src="<%= project.image %>" class="card-img-top" alt="...">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">
+                                                            <%= project.title %>
+                                                        </h5>
+                                                        <p class="card-text">
+                                                            <%= project.description.substring(0,200) %>
+                                                        </p>
+                                                        <a class="btn btn-success btn-sm" href="/projects/<%= project._id%>">More Info</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <% }}); %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingThree">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-center btn-lg" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                Art / Other<span class="badge badge-secondary ml-1 p-2 float-right"><%= projects.reduce((acc, cur) => cur.type === "art" ? ++acc : acc, 0);%></span>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#headingThree">
+                        <div class="card-body">
+                            <div class="card-deck mx-1">
+                                <div class="row">
+                                    <% projects.forEach(function(project){ %>
+                                        <% if (project.type === "art"){ %>
+                                            <div class="col-12 col-md-4">
+                                                <div class="card">
+                                                    <img src="<%= project.image %>" class="card-img-top" alt="...">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">
+                                                            <%= project.title %>
+                                                        </h5>
+                                                        <p class="card-text">
+                                                            <%= project.description.substring(0,200) %>
+                                                        </p>
+                                                        <a class="btn btn-success btn-sm" href="/projects/<%= project._id%>">More Info</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <% }}); %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+        <%- include("partials/who") %>
+            <%- include("partials/footer") %>

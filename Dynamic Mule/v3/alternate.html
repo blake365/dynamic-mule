@@ -1,0 +1,326 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Mule Studio - Austin, TX</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="mule.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css" integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous">
+</head>
+
+<body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top py-0 border-bottom shadow-sm">
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-md-none d-block"><!-- hidden spacer to center brand on mobile --></span>
+            <a class="navbar-brand" href="index.html">
+                <i class="fab fa-sticker-mule pr-1"></i> Mule Studio
+            </a>
+            <div class="w-100 text-right">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse flex-grow-1 text-center" id="myNavbar">
+            <ul class="navbar-nav ml-auto flex-nowrap">
+                <!-- <li class="nav-item">
+                    <a href="#Top" class="nav-link">Home</a>
+                </li> -->
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Contact</a>
+                </li>
+                <!-- <li class="nav-item">
+                    <a href="alternate.html" class="nav-link">New Site Design</a>
+                </li> -->
+                <li class="nav-item">
+                    <a href="#projectsCollapser" class="nav-link">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#whoWeAre" class="nav-link">Who We Are</a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="https://www.instagram.com/mule_studio/" class="nav-link"><i class="fab fa-instagram fa-lg pt-1"></i></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- content -->
+    <section id="Top" class="pt-5">
+        <!-- new top layout: Logo & contact in thinner row, large image with "what we do" below -->
+        <span class="w-100 d-block pt-5 mt-n5" id="contact"></span>
+        <!-- logo -->
+        <div class="row justify-content-center align-items-center pt-1 mb-n4">
+            <div class="col-12 col-sm-6 col-lg-7 col-xl-6">
+                <img class="img-fluid d-none d-lg-block mx-auto" src="imgs/logo.png">
+                <img class="img-fluid d-block d-lg-none mx-auto" src="imgs/logosmall.png">
+            </div>
+            <!-- <div class="col-1 d-sm-none mx-auto">
+                <h4 class="border-left border-success">Custom Woodwork and Fabrication</h4>
+                <div class="">
+                    <h5 class="border-left border-secondary">Residential Furniture</h5>
+                    <h5 class="border-left border-secondary">Commercial Build-outs</h5>
+                </div>
+            </div> -->
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-4">
+                <div class="card mx-auto" style="width: 90%;">
+                    <h4 class="card-header text-center">Contact Us</h4>
+                    <div class="card-body">
+                        <p class="card-text">All of our projects start with a phone call or an email, so please don't hesitate to reach out. We do this because we love the process. Even if you don't know exactly what you're looking for, we are more than happy to work with
+                            you to create something that you truly adore.
+                            <h5 class="card-subtitle mb-2 text-muted">Chris Hawley</h5>
+                            <a href="tel:205 568 2603" class="card-link">205-568-2603</a><br>
+                            <a href="mailto:chris@mule-studio.com" class="card-link">chris@mule-studio.com</a> <br> 123 somewhere street, Austin, TX
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="col-lg-5 col-xl-4 col-11 order-1 order-lg-2">
+            <img class="row d-none d-md-block justify-content-center img-fluid border mx-auto shadow-sm" src="imgs/bar.jpg">
+        </div> -->
+
+        <!-- Recent Projects Grid-->
+        <!-- find it in index.html -->
+
+        <!-- Projects - expandable sections -->
+        <div id="projectsCollapser" class="pt-5 mt-n4">
+            <div class="accordion" id="accordionExample">
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-center btn-lg" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Residential Furniture <span class="badge badge-secondary ml-1 p-2 float-right">6</span>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <div class="card-deck mx-1">
+                                <div class="row">
+                                    <div class="card">
+                                        <!-- removed carousel  -->
+                                        <img src="imgs/hinges.jpeg" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Credenza</h5>
+                                            <p class="card-text">Details about the Credenza.</p>
+                                            <button class="btn btn-success btn-sm">More Info</button>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <img src="imgs/hinges.jpeg" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Item</h5>
+                                            <p class="card-text">Details about Item.</p>
+                                            <button class="btn btn-success btn-sm">More Info</button>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <img src="imgs/chair.jpg" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Item 2</h5>
+                                            <p class="card-text">Details about Item 2.</p>
+                                            <button class="btn btn-success btn-sm">More Info</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="card">
+                                        <img src="imgs/angles.jpg" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Credenza</h5>
+                                            <p class="card-text">Details about the wine store project. Shelving, counter, bench, table. Fun story about the installation day.
+                                                <button class="btn btn-success btn-sm">See More</button>
+                                            </p>
+
+                                            <p class="card-text"><small class="text-muted">Project completed: DATE</small></p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <img src="imgs/hinges.jpeg" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Coffee Table</h5>
+                                            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <img src="imgs/chair.jpg" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Chair</h5>
+                                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. </p>
+                                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingTwo">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-center collapsed btn-lg" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Commercial Build-outs <span class="badge badge-secondary ml-1 p-2 float-right">3</span>
+                        </button>
+                        </h2>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#headingTwo">
+                        <div class="card-body">
+                            <div class="card-deck">
+                                <div class="card">
+                                    <img src="imgs/wine.jpg" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Wine store</h5>
+                                        <p class="card-text">Details about the wine store project. Shelving, counter, bench, table. Fun story about the installation day.
+                                            <p>Location, company website, customer review.</p>
+                                            <button class="btn btn-success btn-sm">See More</button>
+                                        </p>
+
+                                        <p class="card-text"><small class="text-muted">Project completed: 6/23/19</small></p>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <img src="imgs/bench.jpg" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Stair Rails</h5>
+                                        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <img src="imgs/bar.jpg" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Card title</h5>
+                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. </p>
+                                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header" id="headingThree">
+                        <h2 class="mb-0 d-2">
+                            <button class="btn btn-link btn-block text-center collapsed btn-lg" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Custom Wall Art <span class="badge badge-secondary ml-1 p-2 float-right">2</span>
+                        </button>
+                        </h2>
+                    </div>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#headingThree">
+                        <div class="card-body">
+                            <div class="card-deck">
+                                <div class="card">
+                                    <img src="imgs/art.jpg" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Appalachian Hills</h5>
+                                        <p class="card-text">Dimensions, wood type, stain, etc.
+                                        </p>
+
+                                        <!-- <p class="card-text"><small class="text-muted">Project completed: DATE</small></p> -->
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <img src="imgs/art2.jpg" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Fabric of the Forest</h5>
+                                        <p class="card-text">Dimensions, wood type, stain, etc.</p>
+                                        <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <img src="imgs/placeholder.png" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Your Custom Piece</h5>
+                                        <p class="card-text">Contact us to request a custom piece of wall art.
+                                            <a class="btn btn-outline-success my-1 btn-lg p-2 mr-2" href="tel:205 568 2603">205-568-2603</a>
+                                            <a class="btn btn-outline-primary my-1 btn-lg p-2" href="mailto:chris@mule-studio.com">chris@mule-studio.com</a></p>
+                                        <!-- <p class="card-text"><small class="text-muted"></small></p> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Who We Are -->
+        <div id="whoWeAre" class="row justify-content-center align-items-center border-bottom border-danger p-5 mt-n3">
+            <!-- chris -->
+            <div class="row justify-content-center align-items-center mb-4">
+                <div class="col-lg-5 col-12 content text-left p-2 lead ">
+                    <h2 class="border-bottom border-primary">Christopher Hawley</h2>
+                    <p>
+                        Hey I'm Chris. I started Mule in 2019 as a small custom furniture studio. ​
+                    </p>
+                    <p>
+                        My background in craft started in Western North Carolina, where I had a unique opportunity to learn traditional american furniture making from a handful of incredible craftspeople.
+                    </p>
+                    <p>
+                        I do not pretend to be a traditional furniture maker, I liberally use contemporary machinery and rarely get out my hand planes, but my background in a more antiquated approach has continued to serve me in how I apply the methods of modern furniture making.
+                    </p>
+
+                </div>
+                <div class="col-lg-5 col-10">
+                    <img class="img-fluid border border-primary mx-auto shadow-sm" src="imgs/chris.jpg ">
+                </div>
+            </div>
+            <!-- chili -->
+            <div class="row justify-content-center align-items-center ">
+                <div class="col-lg-5 col-12 content text-left p-2 lead order-2 ">
+                    <h2 class="border-bottom border-info">Chilton Mendez</h2>
+                    <p>
+                        Chili is my partner at Mule. Born and raised in Wimberly, Texas, he operates as a shop manager at our space in east Austin.​
+                    </p>
+                    <p>
+                        Chili is a talented woodworker, but seems to have an endless knowledge of every adjacent trade, and therefore is sort of our installation specialist. He's worked in solar energy, built a tiny house, and is a certified forearm model, but his real expertise
+                        in problem solving, which makes him one of the best woodworkers in Austin. </p>
+
+                </div>
+                <div class="col-lg-5 col-10 order-2 order-lg-1">
+                    <img class="img-fluid border border-info mx-auto shadow-sm" src="imgs/chili.jpg ">
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <div class="row justify-content-center align-items-center p-2">
+            <div class="text-center ">
+                <p class="lead"><strong>Mule Studio</strong><br><em>Austin, Texas</em><br>
+                    <a class="btn btn-outline-primary mt-2 m-1 btn-lg " href="mailto:chris@mule-studio.com "><i class="fas fa-envelope "></i></a>
+                    <a class="btn btn-outline-success mt-2 m-1 btn-lg " href="tel:205 568 2603 "><i class="fas fa-phone "></i></a>
+                    <a class="btn btn-outline-warning mt-2 btn-lg m-1" href="https://www.instagram.com/mule_studio/"><i class="fab fa-instagram "></i></a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js " integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj " crossorigin="anonymous "></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js " integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo " crossorigin="anonymous "></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js " integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI " crossorigin="anonymous "></script>
+    <script type="text/javascript ">
+        $('.navbar-nav>li>a').on('click', function() {
+            $('.navbar-collapse').collapse('hide');
+        });
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
