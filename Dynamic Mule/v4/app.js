@@ -59,4 +59,8 @@ app.use("/projects", projectRoutes);
 
 
 
-app.listen(2000);
+let port = process.env.PORT;
+if (port == null || port == "") {
+    port = 8000;
+}
+app.listen(port);
