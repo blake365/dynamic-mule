@@ -4,6 +4,7 @@ var Project = require("../models/project");
 var User = require("../models/user");
 
 
+
 // Project Index/Home page
 router.get("/", function(req, res) {
     Project.find({}, function(err, projects) {

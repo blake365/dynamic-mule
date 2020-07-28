@@ -14,25 +14,20 @@ const expressSanitizer = require("express-sanitizer");
 var projectRoutes = require("./routes/projects");
 var authRoutes = require("./routes/auth");
 
-// local connection
-// mongoose.connect('mongodb://localhost:27017/mule_project', {
-//         useNewUrlParser: true,
-//         useUnifiedTopology: true
-//     })
-//     .then(() => console.log('Connected to DB!'))
-//     .catch(error => console.log(error.message));
-
-const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://Blake365:Novarium9*2@cluster0.fmizg.mongodb.net/mule_project_heroku?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-client.connect(err => {
-    const collection = client.db("test").collection("devices");
-    // perform actions on the collection object
-    client.close();
-});
 
 
-//changing body parser to just express
+// Start DB connection
+mongoose.connect(process.env.DATABASEURL, {
+
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    })
+    .then(() => console.log('Connected to DB!'))
+    .catch(error => console.log(error.message));
+
+
+
+
 app.use(express.urlencoded({ entended: true }));
 app.use(express.json());
 app.set("view engine", "ejs");
@@ -58,6 +53,7 @@ app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+
 app.use(function(req, res, next) {
     res.locals.currentUser = req.user;
     next();
@@ -70,8 +66,7 @@ app.use("/projects", projectRoutes);
 
 
 
-let port = process.env.PORT;
-if (port == null || port == "") {
-    port = 8000;
-}
-app.listen(port);
+var port = process.env.PORT || 3000;
+app.listen(port, function() {
+    console.log("Server Has Started!");
+});
