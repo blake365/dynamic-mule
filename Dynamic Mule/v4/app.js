@@ -14,10 +14,10 @@ const expressSanitizer = require("express-sanitizer");
 var projectRoutes = require("./routes/projects");
 var authRoutes = require("./routes/auth");
 
+// Start DB connection with backup db
+var url = process.env.DATABASEURL || "mongodb://localhost:27017/mule_project";
 
-
-// Start DB connection
-mongoose.connect(process.env.DATABASEURL, {
+mongoose.connect(url, {
 
         useNewUrlParser: true,
         useUnifiedTopology: true
