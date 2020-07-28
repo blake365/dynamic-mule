@@ -3,7 +3,7 @@ var Project = require("./models/project");
 
 
 var data = [{
-    type: "Residential",
+    type: "Web",
     title: "Seed 1",
     image: "https://images.unsplash.com/photo-1552727451-6f5671e14d83?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60",
     image1: "https://images.unsplash.com/photo-1550853024-fae8cd4be47f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60",
@@ -29,7 +29,7 @@ var data = [{
     price: 23,
     cost: 45
 }, {
-    type: "Residential",
+    type: "Web",
     title: "Seed 2",
     image: "https://images.unsplash.com/photo-1535083783855-76ae62b2914e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60",
     image1: "https://images.unsplash.com/photo-1550853024-fae8cd4be47f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60",
@@ -55,7 +55,7 @@ var data = [{
     price: 23,
     cost: 45
 }, {
-    type: "Residential",
+    type: "Web",
     title: "Seed 3",
     image: "https://images.unsplash.com/photo-1535083783855-76ae62b2914e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60",
     image1: "https://images.unsplash.com/photo-1550853024-fae8cd4be47f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60",
@@ -81,7 +81,7 @@ var data = [{
     price: 23,
     cost: 45
 }, {
-    type: "Commercial",
+    type: "Python",
     title: "Seed 4",
     image: "https://images.unsplash.com/photo-1535083783855-76ae62b2914e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60",
     image1: "https://images.unsplash.com/photo-1550853024-fae8cd4be47f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60",
@@ -107,7 +107,7 @@ var data = [{
     price: 23,
     cost: 45
 }, {
-    type: "Commercial",
+    type: "Python",
     title: "Seed 5",
     image: "https://images.unsplash.com/photo-1535083783855-76ae62b2914e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60",
     image1: "https://images.unsplash.com/photo-1550853024-fae8cd4be47f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60",

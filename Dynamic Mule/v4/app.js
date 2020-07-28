@@ -15,7 +15,7 @@ var projectRoutes = require("./routes/projects");
 var authRoutes = require("./routes/auth");
 
 // Start DB connection with backup db
-var url = process.env.DATABASEURL || "mongodb://localhost:27017/mule_project";
+var url = process.env.DATABASEURL || "mongodb://localhost:27017/portfolio";
 
 mongoose.connect(url, {
 
@@ -38,7 +38,7 @@ app.use(methodOverride("_method"));
 app.use(expressSanitizer());
 
 // DB seed
-// seedDB();
+seedDB();
 
 //set up passport
 app.use(require("express-session")({

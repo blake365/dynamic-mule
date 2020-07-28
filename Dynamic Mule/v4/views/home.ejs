@@ -2,13 +2,13 @@
     <%- include("partials/logobar") %>
 
         <!-- Projects - expandable sections -->
-        <div id="ResidentialHeader" class="pt-5 mt-n4">
+        <div id="WebHeader" class="pt-5 mt-n4">
             <div class="accordion" id="accordionExample">
                 <div class="card">
                     <div class="card-header" id="headingOne">
                         <h2 class="mb-0">
                             <button class="btn btn-link btn-block text-center btn-lg" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                Web Development <span class="badge badge-secondary ml-1 p-2 float-right"><%= projects.reduce((acc, cur) => cur.type === "Residential" ? ++acc : acc, 0);%></span>
+                                Web Development <span class="badge badge-secondary ml-1 p-2 float-right"><%= projects.reduce((acc, cur) => cur.type === "Web" ? ++acc : acc, 0);%></span>
                             </button>
                         </h2>
                     </div>
@@ -17,7 +17,7 @@
                             <div class="card-deck mx-1 mb-n3">
                                 <div class="row">
                                     <% projects.forEach(function(project){ %>
-                                        <% if (project.type === "Residential"){ %>
+                                        <% if (project.type === "Web"){ %>
                                             <div class="col-12 col-md-6 col-lg-4">
                                                 <div class="card mb-3">
                                                     <img src="<%= project.image %>" class="card-img-top" alt="...">
@@ -37,13 +37,13 @@
                             </div>
                         </div>
                     </div>
-                    <div id="CommercialHeader" class="pt-5 mt-n5"></div>
+                    <div id="PythonHeader" class="pt-5 mt-n5"></div>
                 </div>
                 <div class="card">
                     <div class="card-header" id="headingTwo">
                         <h2 class="mb-0">
                             <button class="btn btn-link btn-block text-center btn-lg" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                                Python<span class="badge badge-secondary ml-1 p-2 float-right"><%= projects.reduce((acc, cur) => cur.type === "Commercial" ? ++acc : acc, 0);%></span>
+                                Python<span class="badge badge-secondary ml-1 p-2 float-right"><%= projects.reduce((acc, cur) => cur.type === "Python" ? ++acc : acc, 0);%></span>
                             </button>
                         </h2>
                     </div>
@@ -52,7 +52,7 @@
                             <div class="card-deck mx-1 mb-n3">
                                 <div class="row">
                                     <% projects.forEach(function(project){ %>
-                                        <% if (project.type === "Commercial"){ %>
+                                        <% if (project.type === "Python"){ %>
                                             <div class="col-12 col-md-6 col-lg-4">
                                                 <div class="card mb-3">
                                                     <img src="<%= project.image %>" class="card-img-top" alt="...">
