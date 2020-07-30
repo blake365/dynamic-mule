@@ -38,7 +38,7 @@ app.use(methodOverride("_method"));
 app.use(expressSanitizer());
 
 // DB seed
-seedDB();
+// seedDB();
 
 //set up passport
 app.use(require("express-session")({
