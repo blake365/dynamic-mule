@@ -25,8 +25,16 @@ var projectSchema = new mongoose.Schema({
     dateCompleted: Date,
     customerReview: String,
     collaborators: String,
+    collaboratorWebsite: String,
     price: Number,
     cost: Number,
+    author: {
+        id: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User"
+        },
+        username: String
+    },
     created: { type: Date, default: Date.now }
 });
 

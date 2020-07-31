@@ -3,6 +3,7 @@ var router = express.Router();
 var passport = require("passport");
 var User = require("../models/user");
 var Project = require("../models/project");
+require('dotenv').config();
 
 router.get("/", function(req, res) {
     res.redirect("/projects");
@@ -16,16 +17,22 @@ router.get("/register", function(req, res) {
 
 router.post("/register", function(req, res) {
     var newUser = new User({ username: req.body.username });
-    User.register(newUser, req.body.password, function(err, user) {
-        if (err) {
-            console.log(err);
-            return res.render("register");
-        } else {
-            passport.authenticate("local")(req, res, function() {
-                res.redirect("/projects");
-            });
-        }
-    });
+    if (req.body.regCode === 'secretcode890') {
+        newUser.isAllowed = true;
+        User.register(newUser, req.body.password, function(err, user) {
+            if (err) {
+                console.log(err);
+                return res.render("register");
+            } else {
+                passport.authenticate("local")(req, res, function() {
+                    res.redirect("/projects");
+                });
+            }
+        });
+    } else {
+        req.flash("error", "You must have a registration code to register")
+        res.redirect("/register")
+    }
 });
 
 router.get("/login", function(req, res) {

@@ -6,7 +6,9 @@ const express = require("express"),
     seedDB = require("./seeds"),
     User = require("./models/user"),
     passport = require("passport"),
-    LocalStrategy = require("passport-local");
+    LocalStrategy = require("passport-local"),
+    flash = require("connect-flash"),
+    dotenv = require('dotenv').config();
 
 
 const expressSanitizer = require("express-sanitizer");
@@ -25,14 +27,12 @@ mongoose.connect(url, {
     .then(() => console.log('Connected to DB!'))
     .catch(error => console.log(error.message));
 
-
-
-
 app.use(express.urlencoded({ entended: true }));
-app.use(express.json());
+app.use(express.json({ entended: true }));
 app.set("view engine", "ejs");
-app.use(express.static("public"));
+app.use(express.static("public", { entended: true }));
 app.use(methodOverride("_method"));
+app.use(flash());
 
 // removes script tags from form input, still allows html
 app.use(expressSanitizer());
@@ -56,6 +56,8 @@ passport.deserializeUser(User.deserializeUser());
 
 app.use(function(req, res, next) {
     res.locals.currentUser = req.user;
+    res.locals.error = req.flash("error");
+    res.locals.success = req.flash("success");
     next();
 });
 

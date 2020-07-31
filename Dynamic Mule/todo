@@ -2,11 +2,13 @@
 2. 
 3. 
     
-4. add edit link to index view if logged in as admin
+4. add edit link to index view if logged in
 5. edit show page so missing elements are hidden
-        if project.type = residential, don't show location info
         forEach through images to populate grid
 6. make discreet login link
+7. add error and success messages
+8. hide registration code and api keys in .env file
+9. add some style to register and login
 
 
 10. build dashboard
