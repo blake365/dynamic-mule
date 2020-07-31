@@ -3,7 +3,6 @@ var router = express.Router();
 var passport = require("passport");
 var User = require("../models/user");
 var Project = require("../models/project");
-require('dotenv').config();
 
 router.get("/", function(req, res) {
     res.redirect("/projects");
@@ -17,7 +16,7 @@ router.get("/register", function(req, res) {
 
 router.post("/register", function(req, res) {
     var newUser = new User({ username: req.body.username });
-    if (req.body.regCode === 'secretcode890') {
+    if (req.body.regCode === process.env.REG_CODE) {
         newUser.isAllowed = true;
         User.register(newUser, req.body.password, function(err, user) {
             if (err) {

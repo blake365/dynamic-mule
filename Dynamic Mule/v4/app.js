@@ -8,7 +8,7 @@ const express = require("express"),
     passport = require("passport"),
     LocalStrategy = require("passport-local"),
     flash = require("connect-flash"),
-    dotenv = require('dotenv').config();
+    dotenv = require('dotenv');
 
 
 const expressSanitizer = require("express-sanitizer");
@@ -33,6 +33,9 @@ app.set("view engine", "ejs");
 app.use(express.static("public", { entended: true }));
 app.use(methodOverride("_method"));
 app.use(flash());
+
+dotenv.config();
+console.log(`Your regcode is ${process.env.REG_CODE}`); // 
 
 // removes script tags from form input, still allows html
 app.use(expressSanitizer());

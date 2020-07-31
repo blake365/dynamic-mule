@@ -111,13 +111,20 @@
 
                                 <div class="form-group">
                                     <label for="">Collaborators</label>
-                                    <input class="form-control" type="text" name="project[collaborators]" placeholder="Collaborators" id="" value="<%= project.collaborators%>">
+                                    <input class="form-control" type="text" name="project[collaborators]" placeholder="Collaborators" value="<%= project.collaborators%>">
+                                    <div class="input-group pt-3">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">http://</div>
+                                        </div>
+                                        <input class="form-control" type="text" name="project[collaboratorWebsite]" placeholder="Website URL" value="<%= project.collaboratorWebsite%>">
+                                    </div>
                                 </div>
-                                <label for="">Project Finances</label>
-                                <div class="form-row form-group">
-                                    <div class="col-6">
-                                        <label for="">Cost</label>
-                                        <input class="form-control" type="text" name="project[cost]" placeholder="100.00" id="" value="<%= project.cost%>"> </div>
+
+                                <label for=" ">Project Finances</label>
+                                <div class="form-row form-group ">
+                                    <div class="col-6 ">
+                                        <label for=" ">Cost</label>
+                                        <input class="form-control " type="text " name="project[cost] " placeholder="100.00 " id=" " value="<%=project.cost%>"> </div>
                                     <div class="col-6">
                                         <label for="">Price</label>
                                         <input class="form-control" type="text" name="project[price]" placeholder="750.00" id="" value="<%= project.price%>"> </div>

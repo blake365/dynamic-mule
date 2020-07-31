@@ -36,55 +36,77 @@
                                         </a>
                                 </p>
                             </li>
-                            <li class="list-group-item"> <iframe class="card-img border-right" width="350" height="300" frameborder="0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCtu_gSxLrO9DpwsKSeE9HnZpDRnA-ZXfo&q=<%= project.projAddressStreet.split(' ').join('+'); %>,<%= project.projAddressCity%>,<%= project.projAddressState%>">
+                            <% if (project.projAddressStreet && project.projAddressCity) { %>
+                                <li class="list-group-item"> <iframe class="card-img border-right" width="350" height="300" frameborder="0" src="https://www.google.com/maps/embed/v1/place?key=<%= process.env.GOOG_API %>&q=<%= project.projAddressStreet.split(' ').join('+'); %>,<%= project.projAddressCity%>,<%= project.projAddressState%>">
                             </iframe></li>
-                            <li class="list-group-item">
-                                <blockquote class="blockquote">
-                                    <p class="mb-0">
-                                        <%= project.customerReview%>
-                                    </p>
-                                    <footer class="blockquote-footer"><cite title="Source Title"><%=project.clientName%></cite></footer>
-                                </blockquote>
-                            </li>
+                                <% } %>
+                                    <% if (project.customerReview) { %>
+                                        <li class="list-group-item">
+                                            <blockquote class="blockquote">
+                                                <p class="mb-0">
+                                                    <%= project.customerReview%>
+                                                </p>
+                                                <footer class="blockquote-footer"><cite title="Source Title"><%=project.clientName%></cite></footer>
+                                            </blockquote>
+                                        </li>
+                                        <% } %>
                         </div>
                     </div>
                     <!-- images -->
                     <div class="col-md-6 order-1 order-md-2">
+
                         <div class="row align-items-start justify-content-center">
                             <div class="col-lg-12 pb-2" data-toggle="modal" data-target="#image">
                                 <img role="button" src="<%= project.image %>" class="img-thumbnail img-fluid border shadow-sm" alt="...">
                             </div>
                         </div>
+                        <!-- images for small screens -->
                         <div class="d-lg-none row align-items-start justify-content-center">
-                            <div class="col-6  pb-2" data-toggle="modal" data-target="#image1">
-                                <img role="button" src="<%= project.image1 %>" class="img-thumbnail img-fluid border shadow-sm" alt="...">
-                            </div>
-                            <div class="col-6 pb-2" data-toggle="modal" data-target="#image2">
-                                <img role="button" src="<%= project.image2 %>" class="pointer img-thumbnail img-fluid border shadow-sm" alt="...">
-                            </div>
-                            <div class="col-6  pb-2" data-toggle="modal" data-target="#image3">
-                                <img role="button" src="<%= project.image3 %>" class="pointer img-thumbnail img-fluid border shadow-sm" alt="...">
-                            </div>
-                            <div class="col-6 pb-2" data-toggle="modal" data-target="#image4">
-                                <img role="button" src="<%= project.image4 %>" class="pointer img-thumbnail img-fluid border shadow-sm" alt="...">
-                            </div>
+                            <% if (project.image1) { %>
+                                <div class="col-6  pb-2" data-toggle="modal" data-target="#image1">
+                                    <img role="button" src="<%= project.image1 %>" class="img-thumbnail img-fluid border shadow-sm" alt="...">
+                                </div>
+                                <% } %>
+                                    <% if (project.image2) { %>
+                                        <div class="col-6 pb-2" data-toggle="modal" data-target="#image2">
+                                            <img role="button" src="<%= project.image2 %>" class="pointer img-thumbnail img-fluid border shadow-sm" alt="...">
+                                        </div>
+                                        <% } %>
+                                            <% if (project.image3) { %>
+                                                <div class="col-6  pb-2" data-toggle="modal" data-target="#image3">
+                                                    <img role="button" src="<%= project.image3 %>" class="pointer img-thumbnail img-fluid border shadow-sm" alt="...">
+                                                </div>
+                                                <% } %>
+                                                    <% if (project.image4) { %>
+                                                        <div class="col-6 pb-2" data-toggle="modal" data-target="#image4">
+                                                            <img role="button" src="<%= project.image4 %>" class="pointer img-thumbnail img-fluid border shadow-sm" alt="...">
+                                                        </div>
+                                                        <% } %>
                         </div>
                     </div>
                 </div>
                 <!-- images for large screen -->
                 <div class="d-none d-lg-flex row align-items-center mt-3 py-3 border-top border-bottom border-secondary">
-                    <div class="col-3" data-toggle="modal" data-target="#image1">
-                        <img role="button" src="<%= project.image1 %>" class="img-thumbnail img-fluid border shadow-sm" alt="...">
-                    </div>
-                    <div class="col-3" data-toggle="modal" data-target="#image2">
-                        <img role="button" src="<%= project.image2 %>" class="img-thumbnail img-fluid border shadow-sm" alt="...">
-                    </div>
-                    <div class="col-3" data-toggle="modal" data-target="#image3">
-                        <img role="button" src="<%= project.image3 %>" class="img-thumbnail img-fluid border shadow-sm" alt="...">
-                    </div>
-                    <div class="col-3" data-toggle="modal" data-target="#image4">
-                        <img role="button" src="<%= project.image4 %>" class="img-thumbnail img-fluid border shadow-sm" alt="...">
-                    </div>
+                    <% if (project.image1) { %>
+                        <div class="col-3" data-toggle="modal" data-target="#image1">
+                            <img role="button" src="<%= project.image1 %>" class="img-thumbnail img-fluid border shadow-sm" alt="...">
+                        </div>
+                        <% } %>
+                            <% if (project.image2) { %>
+                                <div class="col-3" data-toggle="modal" data-target="#image2">
+                                    <img role="button" src="<%= project.image2 %>" class="img-thumbnail img-fluid border shadow-sm" alt="...">
+                                </div>
+                                <% } %>
+                                    <% if (project.image3) { %>
+                                        <div class="col-3" data-toggle="modal" data-target="#image3">
+                                            <img role="button" src="<%= project.image3 %>" class="img-thumbnail img-fluid border shadow-sm" alt="...">
+                                        </div>
+                                        <% } %>
+                                            <% if (project.image4) { %>
+                                                <div class="col-3" data-toggle="modal" data-target="#image4">
+                                                    <img role="button" src="<%= project.image4 %>" class="img-thumbnail img-fluid border shadow-sm" alt="...">
+                                                </div>
+                                                <% } %>
                 </div>
 
                 <!-- Modals -->
@@ -144,52 +166,74 @@
                         <p>
                             <%= project.details %>
                         </p>
-                        <p>
-                            This project was completed with the help of <strong>
-                    <%= project.collaborators %></strong>.
-                        </p>
+                        <% if (project.collaborators){ %>
+                            <p>
+                                This project was completed with the help of
+                                <a href="http://<%=project.collaboratorWebsite%>">
+                                    <%=project.collaborators%>
+                                </a>.
+                            </p>
+                            <% } %>
                     </div>
                 </div>
         </div>
 
         <% } else { %>
+            <!-- non-commercial projects -->
             <div class="row justify-content-center align-items-center">
-                <div class="col-md-6 order-1 order-md-2">
+                <div class="col-md-8 order-1 order-md-2">
                     <div class="row align-items-start justify-content-center">
                         <div class="col-lg-12 pb-2" data-toggle="modal" data-target="#image">
                             <img role="button" src="<%= project.image %>" class="img-thumbnail img-fluid border shadow-sm mx-auto" alt="...">
                         </div>
                     </div>
-
+                    <!-- small screens -->
                     <div class="d-lg-none row align-items-start justify-content-center">
-                        <div class="col-6  pb-2" data-toggle="modal" data-target="#image1">
-                            <img role="button" src="<%= project.image1 %>" class="img-thumbnail img-fluid border shadow-sm" alt="...">
-                        </div>
-                        <div class="col-6 pb-2" data-toggle="modal" data-target="#image2">
-                            <img role="button" src="<%= project.image2 %>" class="pointer img-thumbnail img-fluid border shadow-sm" alt="...">
-                        </div>
-                        <div class="col-6  pb-2" data-toggle="modal" data-target="#image3">
-                            <img role="button" src="<%= project.image3 %>" class="pointer img-thumbnail img-fluid border shadow-sm" alt="...">
-                        </div>
-                        <div class="col-6 pb-2" data-toggle="modal" data-target="#image4">
-                            <img role="button" src="<%= project.image4 %>" class="pointer img-thumbnail img-fluid border shadow-sm" alt="...">
-                        </div>
+                        <% if (project.image1) { %>
+                            <div class="col-6  pb-2" data-toggle="modal" data-target="#image1">
+                                <img role="button" src="<%= project.image1 %>" class="img-thumbnail img-fluid border shadow-sm" alt="...">
+                            </div>
+                            <% } %>
+                                <% if (project.image2) { %>
+                                    <div class="col-6 pb-2" data-toggle="modal" data-target="#image2">
+                                        <img role="button" src="<%= project.image2 %>" class="pointer img-thumbnail img-fluid border shadow-sm" alt="...">
+                                    </div>
+                                    <% } %>
+                                        <% if (project.image3) { %>
+                                            <div class="col-6  pb-2" data-toggle="modal" data-target="#image3">
+                                                <img role="button" src="<%= project.image3 %>" class="pointer img-thumbnail img-fluid border shadow-sm" alt="...">
+                                            </div>
+                                            <% } %>
+                                                <% if (project.image4) { %>
+                                                    <div class="col-6 pb-2" data-toggle="modal" data-target="#image4">
+                                                        <img role="button" src="<%= project.image4 %>" class="pointer img-thumbnail img-fluid border shadow-sm" alt="...">
+                                                    </div>
+                                                    <% } %>
                     </div>
                 </div>
             </div>
+            <!-- large screens -->
             <div class="d-none d-lg-flex row align-items-center mt-3 py-3 border-top border-bottom border-secondary">
-                <div class="col-3" data-toggle="modal" data-target="#image1">
-                    <img role="button" src="<%= project.image1 %>" class="img-thumbnail img-fluid border shadow-sm" alt="...">
-                </div>
-                <div class="col-3" data-toggle="modal" data-target="#image2">
-                    <img role="button" src="<%= project.image2 %>" class="img-thumbnail img-fluid border shadow-sm" alt="...">
-                </div>
-                <div class="col-3" data-toggle="modal" data-target="#image3">
-                    <img role="button" src="<%= project.image3 %>" class="img-thumbnail img-fluid border shadow-sm" alt="...">
-                </div>
-                <div class="col-3" data-toggle="modal" data-target="#image4">
-                    <img role="button" src="<%= project.image4 %>" class="img-thumbnail img-fluid border shadow-sm" alt="...">
-                </div>
+                <% if (project.image1) { %>
+                    <div class="col-3 mx-auto" data-toggle="modal" data-target="#image1">
+                        <img role="button" src="<%= project.image1 %>" class="img-thumbnail img-fluid border shadow-sm" alt="...">
+                    </div>
+                    <% } %>
+                        <% if (project.image2) { %>
+                            <div class="col-3 mx-auto" data-toggle="modal" data-target="#image2">
+                                <img role="button" src="<%= project.image2 %>" class="img-thumbnail img-fluid border shadow-sm" alt="...">
+                            </div>
+                            <% } %>
+                                <% if (project.image3) { %>
+                                    <div class="col-3 mx-auto" data-toggle="modal" data-target="#image3">
+                                        <img role="button" src="<%= project.image3 %>" class="img-thumbnail img-fluid border shadow-sm" alt="...">
+                                    </div>
+                                    <% } %>
+                                        <% if (project.image4) { %>
+                                            <div class="col-3 mx-auto" data-toggle="modal" data-target="#image4">
+                                                <img role="button" src="<%= project.image4 %>" class="img-thumbnail img-fluid border shadow-sm" alt="...">
+                                            </div>
+                                            <% } %>
             </div>
 
             <!-- Modals -->
@@ -249,21 +293,29 @@
                     <p>
                         <%= project.details %>
                     </p>
-                    <p>
-                        This project was completed with the help of <strong>
-                    <%= project.collaborators %></strong>.
-                    </p>
+                    <blockquote class="blockquote">
+                        <p class="mb-0">
+                            <%= project.customerReview%>
+                        </p>
+                        <footer class="blockquote-footer"><cite title="Source Title"><%=project.clientName%></cite></footer>
+                    </blockquote>
+                    <% if (project.collaborators){ %>
+                        <p>
+                            This project was completed with the help of
+                            <a href="http://<%=project.collaboratorWebsite%>">
+                                <%=project.collaborators%>
+                            </a>.
+                        </p>
+                        <% } %>
                 </div>
             </div>
     </div>
 
     <% } %>
         <div class="p-5">
-            <% if (!currentUser)  { %>
-                <div></div>
-                <% } else { %>
-                    <a href="/projects/<%= project._id %>/edit" class="btn btn-warning btn-block">EDIT POST</a>
-                    <% } %>
+            <% if (currentUser)  { %>
+                <a href="/projects/<%= project._id %>/edit" class="btn btn-warning btn-block">EDIT POST</a>
+                <% } %>
         </div>
 
         </div>
