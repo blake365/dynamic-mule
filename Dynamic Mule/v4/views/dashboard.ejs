@@ -1,0 +1,152 @@
+<%- include("partials/header") %>
+
+    <% var profitSumComm = 0; var marginSumComm = 0; var timeSumComm = 0; var revenueComm=0; var countComm = 0; 
+    var profitSumRes = 0; var marginSumRes = 0; var timeSumRes = 0; var revenueRes=0;  var countRes = 0;
+    var profitSumArt= 0; var marginSumArt = 0; var timeSumArt = 0; var revenueArt=0;  var countArt = 0;
+    var profitSum= 0; var marginSum = 0; var timeSum = 0; var revenue = 0;  var count = 0;
+projects.forEach(function(project){
+
+var profit = project.price - project.cost; 
+var margin = Math.trunc((profit / project.price)*100);
+var time = Math.abs(project.dateCompleted - project.dateStarted) / 86400000; 
+profitSum+= profit; marginSum+= margin; timeSum+= time; revenue+= project.price; count++;
+
+if(project.type === "Commercial"){
+// var profit = project.price - project.cost; 
+// var margin = Math.trunc((profit / project.price)*100);
+// var time = Math.abs(project.dateCompleted - project.dateStarted) / 86400000; 
+profitSumComm+= profit; marginSumComm+= margin; timeSumComm+= time; revenueComm+= project.price; countComm++;
+} else if (project.type === "Residential"){
+// var profit = project.price - project.cost; 
+// var margin = Math.trunc((profit / project.price)*100);
+// var time = Math.abs(project.dateCompleted - project.dateStarted) / 86400000; 
+profitSumRes+= profit; marginSumRes+= margin; timeSumRes+= time; revenueRes+= project.price; countRes++;
+} else if (project.type === "Art"){
+// var profit = project.price - project.cost; 
+// var margin = Math.trunc((profit / project.price)*100);
+// var time = Math.abs(project.dateCompleted - project.dateStarted) / 86400000; 
+profitSumArt+= profit; marginSumArt+= margin; timeSumArt+= time; revenueArt+= project.price; countArt++;
+} 
+});
+ %>
+
+        <div class="container-fluid pt-5">
+            <div>
+                <h1>Welcome to the dashboard</h1>
+            </div>
+            <div>here I will display data and metrics related to the projects in the database</div>
+            <div class="row">
+
+                <div class="col-md-4 pb-2">
+                    <div class="card">
+                        <div class="card-header bg-info text-white">Commercial Stats</div>
+                        <div class="card-body">
+
+                            <p class="card-text"><strong>Projects:</strong>
+                                <%= projects.reduce((acc, cur) => cur.type === "Commercial" ? ++acc : acc, 0);%>
+                                    <br> <strong>Revenue:</strong> $
+                                    <%= Math.trunc(revenueComm)%><br> <strong>Average Margin:</strong>
+                                        <%= Math.trunc(marginSumComm/countComm) %>%<br> <strong>Average Project Duration:</strong>
+                                            <%= Math.trunc(timeSumComm/countComm) %> days
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 pb-2">
+                    <div class="card">
+                        <div class="card-header bg-info text-white">Residential Stats</div>
+
+                        <div class="card-body">
+                            <p class="card-text"><strong>Projects:</strong>
+                                <%= projects.reduce((acc, cur) => cur.type === "Residential" ? ++acc : acc, 0);%>
+                                    <br> <strong>Revenue:</strong>$
+                                    <%= Math.trunc(revenueRes)%><br> <strong>Average Margin:</strong>
+                                        <%= Math.trunc(marginSumRes/countRes) %>%<br> <strong>Average Project Duration:</strong>
+                                            <%= Math.trunc(timeSumRes/countRes) %> days
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 pb-2">
+                    <div class="card">
+                        <div class="card-header bg-info text-white">Art Stats</div>
+
+                        <div class="card-body">
+                            <p class="card-text"><strong>Projects:</strong>
+                                <%= projects.reduce((acc, cur) => cur.type === "Art" ? ++acc : acc, 0);%>
+                                    <br> <strong>Revenue: </strong>$
+                                    <%= Math.trunc(revenueArt)%><br> <strong> Margin:</strong>
+                                        <%= Math.trunc(marginSumArt/countArt) %>%<br> <strong>Average Project Duration:</strong>
+                                            <%= Math.trunc(timeSumArt/countArt) %> days
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">Total Projects:
+                    <%= projects.length %>
+                        <table class="table table-bordered">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th>
+                                        Project Name - Type
+                                    </th>
+                                    <th>
+                                        Profit
+                                    </th>
+                                    <th>
+                                        Profit Margin
+                                    </th>
+                                    <th>
+                                        Time (days)
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% projects.forEach(function(project){ %>
+                                    <tr>
+                                        <td>
+                                            <%= project.title %> -
+                                                <%=project.type.substring(0, 3) %><a class="ml-3 btn-warning" href="/projects/<%= project._id%>/edit">Edit</a>
+                                        </td>
+                                        <td class="text-center">
+                                            <% var profit = project.price - project.cost;  %>
+                                                $
+                                                <%= profit %>
+                                        </td>
+                                        <td class="text-center">
+                                            <% var margin = Math.trunc((profit / project.price)*100) %>
+                                                <%= margin %>%
+                                        </td>
+                                        <td class="text-center">
+                                            <% var time = Math.abs(project.dateCompleted - project.dateStarted) / 86400000; %>
+                                                <%= time %>
+                                        </td>
+                                    </tr>
+                                    <% }); %>
+                                        <tr>
+                                            <td>Averages:</td>
+
+                                            <td class="text-center">
+                                                $
+                                                <%= Math.trunc(profitSum/count) %>
+                                            </td>
+                                            <td class="text-center">
+                                                <%= Math.trunc(marginSum/count) %>%
+                                            </td>
+                                            <td class="text-center">
+                                                <%= Math.trunc(timeSum/count) %>
+                                            </td>
+                                        </tr>
+                            </tbody>
+                        </table>
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+        <%- include("partials/footer") %>

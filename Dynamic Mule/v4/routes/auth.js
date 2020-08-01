@@ -8,6 +8,7 @@ router.get("/", function(req, res) {
     res.redirect("/projects");
 });
 
+
 //auth routes
 
 router.get("/register", function(req, res) {
@@ -21,15 +22,16 @@ router.post("/register", function(req, res) {
         User.register(newUser, req.body.password, function(err, user) {
             if (err) {
                 console.log(err);
-                return res.render("register");
+                return res.render("register", { "error": err.message });
             } else {
                 passport.authenticate("local")(req, res, function() {
+                    req.flash("success", "Welcome Aboard " + user.username + "!");
                     res.redirect("/projects");
                 });
             }
         });
     } else {
-        req.flash("error", "You must have a registration code to register")
+        req.flash("error", "You must have a registration code to create an account")
         res.redirect("/register")
     }
 });
@@ -45,14 +47,16 @@ router.post("/login", passport.authenticate("local", {
 
 router.get("/logout", function(req, res) {
     req.logout();
+    req.flash("success", "Logged Out")
     res.redirect("/projects")
 });
 
-//check if user is logged in, used as middleware to prevent access to secret page
+//check if user is logged in
 function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) {
         return next();
     }
+    req.flash("error", "You must log in")
     res.redirect("/login")
 }
 

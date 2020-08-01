@@ -16,6 +16,16 @@ router.get("/", function(req, res) {
     });
 });
 
+router.get("/dashboard", isLoggedIn, function(req, res) {
+    Project.find({}, function(err, projects) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.render("dashboard", { projects: projects });
+        }
+    });;
+});
+
 // create a new project
 router.get("/new", isLoggedIn, function(req, res) {
     res.render("new");
@@ -28,6 +38,7 @@ router.post("/", isLoggedIn, function(req, res) {
         if (err) {
             res.render("new");
         } else {
+            req.flash("success", "Project Created")
             res.redirect("/projects");
         }
     });
@@ -64,6 +75,7 @@ router.put("/:id", isLoggedIn, function(req, res) {
         if (err) {
             res.redirect("/projects");
         } else {
+            req.flash("success", "Project Edited")
             res.redirect("/projects/" + req.params.id);
         }
     })
@@ -75,6 +87,7 @@ router.delete("/:id", isLoggedIn, function(req, res) {
         if (err) {
             res.redirect("/projects");
         } else {
+            req.flash("success", "Project Deleted")
             res.redirect("/projects");
         }
     });

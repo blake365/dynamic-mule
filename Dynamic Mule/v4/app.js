@@ -33,9 +33,8 @@ app.set("view engine", "ejs");
 app.use(express.static("public", { entended: true }));
 app.use(methodOverride("_method"));
 app.use(flash());
-
+mongoose.set('useFindAndModify', false);
 dotenv.config();
-console.log(`Your regcode is ${process.env.REG_CODE}`); // 
 
 // removes script tags from form input, still allows html
 app.use(expressSanitizer());

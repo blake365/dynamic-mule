@@ -26,9 +26,12 @@
                                                             <%= project.title %>
                                                         </h5>
                                                         <p class="card-text">
-                                                            <%= project.description.substring(0,200) %>
+                                                            <%= project.description %>
                                                         </p>
-                                                        <a class="btn btn-success btn-sm" href="/projects/<%= project._id%>">More Info</a>
+                                                        <a class="btn btn-secondary btn-sm" href="/projects/<%= project._id%>">More Info</a>
+                                                        <% if (currentUser){ %>
+                                                            <a class="btn btn-warning btn-sm" href="/projects/<%= project._id%>/edit">Edit</a>
+                                                            <% } %>
                                                     </div>
                                                 </div>
                                             </div>
@@ -61,9 +64,12 @@
                                                             <%= project.title %>
                                                         </h5>
                                                         <p class="card-text">
-                                                            <%= project.description.substring(0,200) %>
+                                                            <%= project.description %>
                                                         </p>
-                                                        <a class="btn btn-success btn-sm" href="/projects/<%= project._id%>">More Info</a>
+                                                        <a class="btn btn-secondary btn-sm" href="/projects/<%= project._id%>">More Info</a>
+                                                        <% if (currentUser){ %>
+                                                            <a class="btn btn-warning btn-sm" href="/projects/<%= project._id%>/edit">Edit</a>
+                                                            <% } %>
                                                     </div>
                                                 </div>
                                             </div>
@@ -96,9 +102,12 @@
                                                             <%= project.title %>
                                                         </h5>
                                                         <p class="card-text">
-                                                            <%= project.description.substring(0,200) %>
+                                                            <%= project.description %>
                                                         </p>
-                                                        <a class="btn btn-success btn-sm" href="/projects/<%= project._id%>">More Info</a>
+                                                        <a class="btn btn-secondary btn-sm" href="/projects/<%= project._id%>">More Info</a>
+                                                        <% if (currentUser){ %>
+                                                            <a class="btn btn-warning btn-sm" href="/projects/<%= project._id%>/edit">Edit</a>
+                                                            <% } %>
                                                     </div>
                                                 </div>
                                             </div>
@@ -110,11 +119,6 @@
                 </div>
             </div>
         </div>
-
-
-
-
-
 
 
         <%- include("partials/who") %>
