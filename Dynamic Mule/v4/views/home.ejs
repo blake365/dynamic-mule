@@ -20,7 +20,7 @@
                                         <% if (project.type === "Residential"){ %>
                                             <div class="col-12 col-md-6 col-lg-4">
                                                 <div class="card mb-3">
-                                                    <img src="<%= project.image %>" class="card-img-top" alt="...">
+                                                    <a href="/projects/<%= project._id%>"><img src="<%= project.image %>" class="card-img-top" alt="..."></a>
                                                     <div class="card-body">
                                                         <h5 class="card-title">
                                                             <%= project.title %>
@@ -28,9 +28,9 @@
                                                         <p class="card-text">
                                                             <%= project.description %>
                                                         </p>
-                                                        <a class="btn btn-secondary btn-sm" href="/projects/<%= project._id%>">More Info</a>
+                                                        <a class="btn btn-outline-dark btn-sm btn-block" href="/projects/<%= project._id%>">More Info</a>
                                                         <% if (currentUser){ %>
-                                                            <a class="btn btn-warning btn-sm" href="/projects/<%= project._id%>/edit">Edit</a>
+                                                            <a class="btn btn-warning btn-sm btn-block" href="/projects/<%= project._id%>/edit">Edit</a>
                                                             <% } %>
                                                     </div>
                                                 </div>
@@ -58,7 +58,7 @@
                                         <% if (project.type === "Commercial"){ %>
                                             <div class="col-12 col-md-6 col-lg-4">
                                                 <div class="card mb-3">
-                                                    <img src="<%= project.image %>" class="card-img-top" alt="...">
+                                                    <a href="/projects/<%= project._id%>"><img src="<%= project.image %>" class="card-img-top" alt="..."></a>
                                                     <div class="card-body">
                                                         <h5 class="card-title">
                                                             <%= project.title %>
@@ -66,9 +66,9 @@
                                                         <p class="card-text">
                                                             <%= project.description %>
                                                         </p>
-                                                        <a class="btn btn-secondary btn-sm" href="/projects/<%= project._id%>">More Info</a>
+                                                        <a class="btn btn-outline-info btn-sm btn-block" href="/projects/<%= project._id%>">More Info</a>
                                                         <% if (currentUser){ %>
-                                                            <a class="btn btn-warning btn-sm" href="/projects/<%= project._id%>/edit">Edit</a>
+                                                            <a class="btn btn-warning btn-sm btn-block" href="/projects/<%= project._id%>/edit">Edit</a>
                                                             <% } %>
                                                     </div>
                                                 </div>
@@ -96,7 +96,7 @@
                                         <% if (project.type === "Art"){ %>
                                             <div class="col-12 col-md-6 col-lg-4">
                                                 <div class="card mb-3">
-                                                    <img src="<%= project.image %>" class="card-img-top" alt="...">
+                                                    <a href="/projects/<%= project._id%>"><img src="<%= project.image %>" class="card-img-top" alt="..."></a>
                                                     <div class="card-body">
                                                         <h5 class="card-title">
                                                             <%= project.title %>
@@ -104,9 +104,9 @@
                                                         <p class="card-text">
                                                             <%= project.description %>
                                                         </p>
-                                                        <a class="btn btn-secondary btn-sm" href="/projects/<%= project._id%>">More Info</a>
+                                                        <a class="btn btn-outline-secondary btn-sm btn-block" href="/projects/<%= project._id%>">More Info</a>
                                                         <% if (currentUser){ %>
-                                                            <a class="btn btn-warning btn-sm" href="/projects/<%= project._id%>/edit">Edit</a>
+                                                            <a class="btn btn-warning btn-sm btn-block" href="/projects/<%= project._id%>/edit">Edit</a>
                                                             <% } %>
                                                     </div>
                                                 </div>
