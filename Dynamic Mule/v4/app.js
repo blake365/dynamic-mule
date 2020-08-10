@@ -9,7 +9,7 @@ const express = require("express"),
     LocalStrategy = require("passport-local"),
     flash = require("connect-flash"),
     dotenv = require('dotenv');
-
+dotenv.config();
 
 const expressSanitizer = require("express-sanitizer");
 
@@ -34,7 +34,7 @@ app.use(express.static("public", { entended: true }));
 app.use(methodOverride("_method"));
 app.use(flash());
 mongoose.set('useFindAndModify', false);
-dotenv.config();
+
 
 // removes script tags from form input, still allows html
 app.use(expressSanitizer());

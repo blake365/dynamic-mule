@@ -1,0 +1,261 @@
+<%- include("../partials/header") %>
+
+    <% var profitSumComm = 0; var marginSumComm = 0; var timeSumComm = 0; var revenueComm=0; var countComm = 0; 
+    var profitSumRes = 0; var marginSumRes = 0; var timeSumRes = 0; var revenueRes=0;  var countRes = 0;
+    var profitSumArt= 0; var marginSumArt = 0; var timeSumArt = 0; var revenueArt=0;  var countArt = 0;
+    var profitSum= 0; var marginSum = 0; var timeSum = 0; var revenue = 0;  var count = 0; var expensesSum = 0;
+projects.forEach(function(project){
+
+var profit = project.price - project.cost; 
+var margin = Math.trunc((profit / project.price)*100);
+var time = Math.abs(project.dateCompleted - project.dateStarted) / 86400000; 
+profitSum+= profit; marginSum+= margin; timeSum+= time; revenue+= project.price; expensesSum+= project.cost; count++;
+
+if(project.type === "Commercial"){
+profitSumComm+= profit; marginSumComm+= margin; timeSumComm+= time; revenueComm+= project.price; countComm++;
+} else if (project.type === "Residential"){
+profitSumRes+= profit; marginSumRes+= margin; timeSumRes+= time; revenueRes+= project.price; countRes++;
+} else if (project.type === "Art"){
+profitSumArt+= profit; marginSumArt+= margin; timeSumArt+= time; revenueArt+= project.price; countArt++;
+} 
+});
+
+
+
+ %>
+
+        <div class="container-fluid pt-5">
+            <div>
+                <h1>Welcome to the dashboard</h1>
+            </div>
+            <div>here I will display data and metrics related to the projects in the database</div>
+            <div class="row">
+
+                <div class="col-md-4 pb-2">
+                    <div class="card">
+                        <div class="card-header bg-info text-white">Commercial Stats</div>
+                        <div class="card-body">
+
+                            <p class="card-text"><strong>Projects:</strong>
+                                <%= projects.reduce((acc, cur) => cur.type === "Commercial" ? ++acc : acc, 0);%>
+                                    <br> <strong>Revenue:</strong> $
+                                    <%= Math.trunc(revenueComm)%><br> <strong>Average Margin:</strong>
+                                        <%= Math.trunc(marginSumComm/countComm) %>%<br> <strong>Average Project Duration:</strong>
+                                            <%= Math.trunc(timeSumComm/countComm) %> days
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 pb-2">
+                    <div class="card">
+                        <div class="card-header bg-info text-white">Residential Stats</div>
+
+                        <div class="card-body">
+                            <p class="card-text"><strong>Projects:</strong>
+                                <%= projects.reduce((acc, cur) => cur.type === "Residential" ? ++acc : acc, 0);%>
+                                    <br> <strong>Revenue:</strong>$
+                                    <%= Math.trunc(revenueRes)%><br> <strong>Average Margin:</strong>
+                                        <%= Math.trunc(marginSumRes/countRes) %>%<br> <strong>Average Project Duration:</strong>
+                                            <%= Math.trunc(timeSumRes/countRes) %> days
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 pb-2">
+                    <div class="card">
+                        <div class="card-header bg-info text-white">Art Stats</div>
+
+                        <div class="card-body">
+                            <p class="card-text"><strong>Projects:</strong>
+                                <%= projects.reduce((acc, cur) => cur.type === "Art" ? ++acc : acc, 0);%>
+                                    <br> <strong>Revenue: </strong>$
+                                    <%= Math.trunc(revenueArt)%><br> <strong> Margin:</strong>
+                                        <%= Math.trunc(marginSumArt/countArt) %>%<br> <strong>Average Project Duration:</strong>
+                                            <%= Math.trunc(timeSumArt/countArt) %> days
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- projects table -->
+            <div class="row">
+                <div class="col table-responsive">
+                    Projects Table:
+                    <table class="table table-bordered table-sm table-hover">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>
+                                    Project Name - Type
+                                </th>
+                                <th>
+                                    Expenses
+                                </th>
+                                <th>
+                                    Revenue
+                                </th>
+                                <th>
+                                    Profit
+                                </th>
+                                <th>
+                                    Profit Margin
+                                </th>
+                                <th>
+                                    Time (days)
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% projects.forEach(function(project){ %>
+                                <tr>
+                                    <td>
+                                        <strong> <%= project.title %> </strong>-
+                                        <a class="ml-2 text-success" href="/projects/<%= project._id%>">Visit Page</a><a class="ml-2 text-warning" href="/projects/<%= project._id%>/edit">Edit</a>
+                                    </td>
+                                    <td class="text-center">
+                                        $
+                                        <%= project.cost %>
+                                    </td>
+                                    <td class="text-center">
+                                        $
+                                        <%= project.price %>
+                                    </td>
+                                    <td class="text-center">
+                                        <% var profit = project.price - project.cost;  %>
+                                            $
+                                            <%= profit %>
+                                    </td>
+                                    <td class="text-center">
+                                        <% var margin = Math.trunc((profit / project.price)*100) %>
+                                            <%= margin %>%
+                                    </td>
+                                    <td class="text-center">
+                                        <% var time = Math.abs(project.dateCompleted - project.dateStarted) / 86400000; %>
+                                            <%= Math.trunc(time) %>
+                                    </td>
+                                </tr>
+                                <% }); %>
+                                    <tr>
+                                        <td>Averages:</td>
+
+                                        <td class="text-center">
+                                            $
+                                            <%= Math.trunc(expensesSum/count) %>
+                                        </td>
+                                        <td class="text-center">
+                                            $
+                                            <%= Math.trunc(revenue/count) %>
+                                        </td>
+                                        <td class="text-center">
+                                            $
+                                            <%= Math.trunc(profitSum/count) %>
+                                        </td>
+                                        <td class="text-center">
+                                            <%= Math.trunc(marginSum/count) %>%
+                                        </td>
+                                        <td class="text-center">
+                                            <%= Math.trunc(timeSum/count) %>
+                                        </td>
+                                    </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col table-responsive">
+                    Client Conctact Table:
+                    <table class="table table-bordered table-sm table-hover ">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>
+                                    Company Name
+                                </th>
+                                <th>
+                                    Contact Name
+                                </th>
+                                <th>
+                                    Email
+                                </th>
+                                <th>
+                                    Phone Number
+                                </th>
+                                <th>
+                                    Website
+                                </th>
+                                <th>
+                                    #
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% projects.forEach(function(project){ %>
+                                <tr>
+                                    <td>
+                                        <strong> <%= project.clientCompany %> </strong>
+                                    </td>
+                                    <td class="text-center">
+                                        <%= project.clientName %>
+                                    </td>
+                                    <td class="text-center">
+                                        <a href="mailto:<%= project.clientContactEmail%>">
+                                            <%= project.clientContactEmail %>
+                                        </a>
+                                    </td>
+                                    <td class="text-center">
+                                        <a href="tel:<%= project.clientContactPhone %>">
+                                            <%= project.clientContactPhone %>
+                                        </a>
+                                    </td>
+                                    <td class="text-center">
+                                        <a href="http://<%= project.clientWebsite %>">
+                                            <%= project.clientWebsite %>
+                                        </a>
+                                    </td>
+                                    <td class="text-center">
+                                        <%= projects.reduce((acc, cur) => cur.clientCompany === project.clientCompany ? ++acc : acc, 0);%>
+                                    </td>
+                                </tr>
+                                <% }); %>
+                </div>
+            </div>
+        </div>
+
+
+
+        </section>
+
+
+
+
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js " integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj " crossorigin="anonymous "></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js " integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo " crossorigin="anonymous "></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js " integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI " crossorigin="anonymous "></script>
+        <script type="text/javascript ">
+            $('.navbar-nav>li>a').on('click', function() {
+                $('.navbar-collapse').collapse('hide');
+            });
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            $(document).ready(function() {
+                $(document).click(
+                    function(event) {
+                        var target = $(event.target);
+                        var _mobileMenuOpen = $(".navbar-collapse").hasClass("show");
+                        if (_mobileMenuOpen === true && !target.hasClass("navbar-toggler")) {
+                            $("button.navbar-toggler").click();
+                        }
+                    }
+                );
+            });
+        </script>
+        </body>
+
+        </html>
