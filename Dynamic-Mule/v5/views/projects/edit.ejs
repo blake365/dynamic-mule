@@ -6,7 +6,7 @@
                 <h1 class="text-center">Edit:
                     <%= project.title%>
                 </h1>
-                <form action="/projects/<%= project.id%>?_method=PUT" method="POST" id="postEditForm">
+                <form action="/projects/<%= project.id%>?_method=PUT" method="POST" id="postEditForm" enctype="multipart/form-data">
                     <label for="">Project Type</label>
                     <div class="form-group">
                         <div class="form-check form-check-inline">
@@ -35,7 +35,7 @@
 
                                     <img src="<%= image.url%>" alt="uploaded image" width="100px">
                                     <label for="image<%= i %>">Delete?</label>
-                                    <input type="checkbox" name="deleteImage" class="imgDelCheckbox" id="image<%= i %>" value="<%=image.public_id %>">
+                                    <input type="checkbox" name="deleteImages[]" class="imgDelCheckbox" id="image<%= i %>" value="<%=image.public_id %>">
                                     <%});%>
                             </div>
                         </div>
@@ -76,9 +76,6 @@
                             <textarea class="form-control" cols="30" rows="6" name="project[details]" required><%= project.details%></textarea>
                         </div>
 
-
-
-
                         <button class="btn btn-info btn-block mb-2" type="button" data-toggle="collapse" data-target="#collapseProject" aria-expanded="true" aria-controls="collapseProject">
     Add Additional Project Information (optional)
   </button>
@@ -91,14 +88,6 @@
                                         <input type="text" class="form-control" name="project[projAddressStreet]" placeholder="Street" value="<%= project.projLocation%>">
                                     </div>
                                 </div>
-
-                                <!-- <label for="">Project Materials</label>
-                                <div class="form-row form-group">
-                                    <div class="col-6">
-                                        <input class="form-control" type="text" name="project[primaryMaterial]" placeholder="Primary" id="" value="<%= //project.primaryMaterial%>"> </div>
-                                    <div class="col-6">
-                                        <input class="form-control" type="text" name="project[secondaryMaterial]" placeholder="Secondary" id="" value="<%= // project.secondaryMaterial%>"> </div>
-                                </div> -->
 
                                 <label for="">Project Timeline</label>
                                 <div class="form-row form-group">
@@ -123,7 +112,7 @@
                                 <div class="form-row form-group ">
                                     <div class="col-6 ">
                                         <label for=" ">Expenses</label>
-                                        <input class="form-control " type="text " name="project[cost] " placeholder="100.00 " id=" " value="<%=project.expenses.total%>"> </div>
+                                        <input class="form-control " type="text " name="project[cost] " placeholder="100.00 " id=" " value="<%=project.expenses%>"> </div>
                                     <div class="col-6">
                                         <label for="">Revenue</label>
                                         <input class="form-control" type="text" name="project[price]" placeholder="750.00" id="" value="<%= project.revenue%>"> </div>
@@ -133,8 +122,7 @@
 
 
                         <button class="btn btn-info btn-block mb-2" type="button" data-toggle="collapse" data-target="#collapseClient" aria-expanded="true" aria-controls="collapseClient">
-    Add Client Information (optional)
-  </button>
+    Add Client Information (optional)</button>
                         <div class="collapse" id="collapseClient">
                             <div class="card card-body mb-2">
                                 <label class="h5 text-center" for="">Client Info</label>
@@ -190,7 +178,7 @@
             if (newTotal > 5) {
                 event.preventDefault();
                 let removalAmt = newTotal - 5;
-                alert(`You need to remove at least ${newTotal-5} image${removalAmt > 1 ? '' : 's'}!`);
+                alert(`You need to remove at least ${newTotal-5} (more) image${removalAmt > 1 ? '' : 's'}!`);
             }
         });
     </script>

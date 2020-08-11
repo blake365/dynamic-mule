@@ -27,7 +27,7 @@ router.get('/:id', asyncErrorHandler(projectShow));
 
 router.get('/:id/edit', asyncErrorHandler(projectEdit));
 
-router.put('/:id', asyncErrorHandler(projectUpdate));
+router.put('/:id', upload.array('images', 5), asyncErrorHandler(projectUpdate));
 
 router.delete('/:id', asyncErrorHandler(projectDestroy));
 
