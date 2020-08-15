@@ -7,7 +7,7 @@
                 <div class="card">
                     <div class="card-header" id="headingOne">
                         <h2 class="mb-0">
-                            <button class="btn btn-link btn-block text-center btn-lg" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <button class="btn btn-link2 btn-block text-center btn-lg" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                 Residential Furniture <span class="badge badge-secondary ml-1 p-2 float-right"><%= projects.reduce((acc, cur) => cur.type === "Residential" ? ++acc : acc, 0);%></span>
                             </button>
                         </h2>
@@ -20,7 +20,7 @@
                                         <% if (project.type === "Residential"){ %>
                                             <div class="col-12 col-md-6 col-lg-4">
                                                 <article class="card mb-3">
-                                                    <a href="/projects/<%= project._id%>"><img src="<%= project.image %>" class="card-img-top" alt="..."></a>
+                                                    <a href="/projects/<%= project._id%>"><img src="<%= project.images[0].url %>" class="card-img-top" alt="..."></a>
                                                     <div class="card-body">
                                                         <h5 class="card-title">
                                                             <%= project.title %>
@@ -28,7 +28,7 @@
                                                         <p class="card-text">
                                                             <%= project.description %>
                                                         </p>
-                                                        <a class="btn btn-outline-dark btn-sm btn-block" href="/projects/<%= project._id%>">More Info</a>
+                                                        <a class="btn btn-outline-info btn-sm btn-block" href="/projects/<%= project._id%>">More Info</a>
                                                         <% if (currentUser){ %>
                                                             <a class="btn btn-warning btn-sm btn-block" href="/projects/<%= project._id%>/edit">Edit</a>
                                                             <% } %>
@@ -45,7 +45,7 @@
                 <div class="card">
                     <div class="card-header" id="headingTwo">
                         <h2 class="mb-0">
-                            <button class="btn btn-link btn-block text-center btn-lg" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                            <button class="btn btn-link2 btn-block text-center btn-lg" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                                 Commercial Build-Outs<span class="badge badge-secondary ml-1 p-2 float-right"><%= projects.reduce((acc, cur) => cur.type === "Commercial" ? ++acc : acc, 0);%></span>
                             </button>
                         </h2>
@@ -58,7 +58,7 @@
                                         <% if (project.type === "Commercial"){ %>
                                             <div class="col-12 col-md-6 col-lg-4">
                                                 <article class="card mb-3">
-                                                    <a href="/projects/<%= project._id%>"><img src="<%= project.image %>" class="card-img-top" alt="..."></a>
+                                                    <a href="/projects/<%= project._id%>"><img src="<%= project.images[0].url %>" class="card-img-top" alt="..."></a>
                                                     <div class="card-body">
                                                         <h5 class="card-title">
                                                             <%= project.title %>
@@ -83,7 +83,7 @@
                 <div class="card">
                     <div class="card-header" id="headingThree">
                         <h2 class="mb-0">
-                            <button class="btn btn-link btn-block text-center btn-lg" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                            <button class="btn btn-link2 btn-block text-center btn-lg" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
                                 Art / Other<span class="badge badge-secondary ml-1 p-2 float-right"><%= projects.reduce((acc, cur) => cur.type === "Art" ? ++acc : acc, 0);%></span>
                             </button>
                         </h2>
@@ -96,7 +96,7 @@
                                         <% if (project.type === "Art"){ %>
                                             <div class="col-12 col-md-6 col-lg-4">
                                                 <article class="card mb-3">
-                                                    <a href="/projects/<%= project._id%>"><img src="<%= project.image %>" class="card-img-top" alt="..."></a>
+                                                    <a href="/projects/<%= project._id%>"><img src="<%= project.images[0].url %>" class="card-img-top" alt="..."></a>
                                                     <div class="card-body">
                                                         <h5 class="card-title">
                                                             <%= project.title %>
@@ -104,7 +104,7 @@
                                                         <p class="card-text">
                                                             <%= project.description %>
                                                         </p>
-                                                        <a class="btn btn-outline-secondary btn-sm btn-block" href="/projects/<%= project._id%>">More Info</a>
+                                                        <a class="btn btn-outline-info btn-sm btn-block" href="/projects/<%= project._id%>">More Info</a>
                                                         <% if (currentUser){ %>
                                                             <a class="btn btn-warning btn-sm btn-block" href="/projects/<%= project._id%>/edit">Edit</a>
                                                             <% } %>

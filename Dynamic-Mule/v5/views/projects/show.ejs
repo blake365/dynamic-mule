@@ -21,314 +21,112 @@
         </div>
 
         <div class="container">
-            <% if (project.type === "Commercial"){ %>
-                <!-- top section, client info and images -->
-                <div class="row justify-content-center align-items-center">
-
-                    <div class="col-md-6 order-2 order-md-1">
-                        <div class="list-group pb-2">
-                            <li class="list-group-item active">Client Information</li>
-                            <li class="list-group-item">
-                                <p class="card-text">This project was completed for
-                                    <%= project.clientName%>. See our work in person or visit them online at
-                                        <a href="http://<%= project.clientWebsite %>">
-                                            <%= project.clientWebsite %>
-                                        </a>
-                                </p>
-                            </li>
-                            <% if (project.projAddressStreet && project.projAddressCity) { %>
-                                <li class="list-group-item"> <iframe class="card-img border-right" width="350" height="300" frameborder="0" src="https://www.google.com/maps/embed/v1/place?key=<%= process.env.GOOG_API %>&q=<%= project.projAddressStreet.split(' ').join('+'); %>,<%= project.projAddressCity%>,<%= project.projAddressState%>">
-                            </iframe></li>
-                                <% } %>
-                                    <% if (project.customerReview) { %>
-                                        <li class="list-group-item">
-                                            <blockquote class="blockquote">
-                                                <p class="mb-0">
-                                                    <%= project.customerReview%>
-                                                </p>
-                                                <footer class="blockquote-footer"><cite title="Source Title"><%=project.clientName%></cite></footer>
-                                            </blockquote>
-                                        </li>
-                                        <% } %>
-                        </div>
-                    </div>
-                    <!-- images -->
-                    <div class="col-md-6 order-1 order-md-2">
-
-                        <div class="row align-items-start justify-content-center">
-                            <div class="col-lg-12 pb-2" data-toggle="modal" data-target="#image">
-                                <img role="button" src="<%= project.image %>" class="img-thumbnail img-fluid border shadow-sm" alt="...">
-                            </div>
-                        </div>
-                        <!-- images for small screens -->
-                        <div class="d-lg-none row align-items-start justify-content-center">
-                            <% if (project.image1) { %>
-                                <div class="col-6  pb-2" data-toggle="modal" data-target="#image1">
-                                    <img role="button" src="<%= project.image1 %>" class="img-thumbnail img-fluid border shadow-sm" alt="...">
-                                </div>
-                                <% } %>
-                                    <% if (project.image2) { %>
-                                        <div class="col-6 pb-2" data-toggle="modal" data-target="#image2">
-                                            <img role="button" src="<%= project.image2 %>" class="pointer img-thumbnail img-fluid border shadow-sm" alt="...">
-                                        </div>
-                                        <% } %>
-                                            <% if (project.image3) { %>
-                                                <div class="col-6  pb-2" data-toggle="modal" data-target="#image3">
-                                                    <img role="button" src="<%= project.image3 %>" class="pointer img-thumbnail img-fluid border shadow-sm" alt="...">
-                                                </div>
-                                                <% } %>
-                                                    <% if (project.image4) { %>
-                                                        <div class="col-6 pb-2" data-toggle="modal" data-target="#image4">
-                                                            <img role="button" src="<%= project.image4 %>" class="pointer img-thumbnail img-fluid border shadow-sm" alt="...">
-                                                        </div>
-                                                        <% } %>
-                        </div>
-                    </div>
-                </div>
-                <!-- images for large screen -->
-                <div class="d-none d-lg-flex row align-items-center mt-3 py-3 border-top border-bottom border-secondary">
-                    <% if (project.image1) { %>
-                        <div class="col-3" data-toggle="modal" data-target="#image1">
-                            <img role="button" src="<%= project.image1 %>" class="img-thumbnail img-fluid border shadow-sm" alt="...">
-                        </div>
-                        <% } %>
-                            <% if (project.image2) { %>
-                                <div class="col-3" data-toggle="modal" data-target="#image2">
-                                    <img role="button" src="<%= project.image2 %>" class="img-thumbnail img-fluid border shadow-sm" alt="...">
-                                </div>
-                                <% } %>
-                                    <% if (project.image3) { %>
-                                        <div class="col-3" data-toggle="modal" data-target="#image3">
-                                            <img role="button" src="<%= project.image3 %>" class="img-thumbnail img-fluid border shadow-sm" alt="...">
-                                        </div>
-                                        <% } %>
-                                            <% if (project.image4) { %>
-                                                <div class="col-3" data-toggle="modal" data-target="#image4">
-                                                    <img role="button" src="<%= project.image4 %>" class="img-thumbnail img-fluid border shadow-sm" alt="...">
-                                                </div>
-                                                <% } %>
-                </div>
-
-                <div>
-                    <% project.images.forEach(function(image) {%>
-                        <img src="<%= image.url%>" alt="uploaded image" width="200px">
-                        <%});%>
-                </div>
-
-                <!-- Modals -->
-                <div class="modal fade" id="image" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
-                    <div class="modal-dialog modal-lg" data-dismiss="modal" aria-label="Close">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                <img src="<%= project.image %>" class="img-fluid border shadow-sm" alt="...">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal fade" id="image1" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
-                    <div class="modal-dialog modal-lg" data-dismiss="modal" aria-label="Close">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                <img src="<%= project.image1 %>" class="img-fluid border shadow-sm" alt="...">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal fade" id="image2" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
-                    <div class="modal-dialog modal-lg" data-dismiss="modal" aria-label="Close">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                <img src="<%= project.image2 %>" class="img-fluid border shadow-sm" alt="...">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal fade" id="image3" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
-                    <div class="modal-dialog modal-lg" data-dismiss="modal" aria-label="Close">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                <img src="<%= project.image3 %>" class="img-fluid border shadow-sm" alt="...">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal fade" id="image4" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
-                    <div class="modal-dialog modal-lg" data-dismiss="modal" aria-label="Close">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                <img src="<%= project.image4 %>" class="img-fluid border shadow-sm" alt="...">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- text -->
-
-                <div class="lead my-3">
-                    <div class="lead">
-                        <p><strong>
-                        <%= project.description %></strong>
-                        </p>
-                        <p>
-                            <%= project.details %>
-                        </p>
-                        <% if (project.collaborators){ %>
-                            <p>
-                                This project was completed with the help of
-                                <a href="http://<%=project.collaboratorWebsite%>">
-                                    <%=project.collaborators%>
-                                </a>.
-                            </p>
-                            <% } %>
-                    </div>
-                </div>
-        </div>
-
-        <% } else { %>
-            <!-- non-commercial projects -->
+            <!-- top section, client info and images -->
             <div class="row justify-content-center align-items-center">
-                <div class="col-md-8 order-1 order-md-2">
-                    <div class="row align-items-start justify-content-center">
-                        <div class="col-lg-12 pb-2" data-toggle="modal" data-target="#image">
-                            <img role="button" src="<%= project.image %>" class="img-thumbnail img-fluid border shadow-sm mx-auto" alt="...">
-                        </div>
-                    </div>
-                    <!-- small screens -->
-                    <div class="d-lg-none row align-items-start justify-content-center">
-                        <% if (project.image1) { %>
-                            <div class="col-6  pb-2" data-toggle="modal" data-target="#image1">
-                                <img role="button" src="<%= project.image1 %>" class="img-thumbnail img-fluid border shadow-sm" alt="...">
-                            </div>
-                            <% } %>
-                                <% if (project.image2) { %>
-                                    <div class="col-6 pb-2" data-toggle="modal" data-target="#image2">
-                                        <img role="button" src="<%= project.image2 %>" class="pointer img-thumbnail img-fluid border shadow-sm" alt="...">
-                                    </div>
-                                    <% } %>
-                                        <% if (project.image3) { %>
-                                            <div class="col-6  pb-2" data-toggle="modal" data-target="#image3">
-                                                <img role="button" src="<%= project.image3 %>" class="pointer img-thumbnail img-fluid border shadow-sm" alt="...">
-                                            </div>
+                <% if (project.type !== "Residential" && project.type !== "Art"){ %>
+                    <div class="col-md-6 order-2 order-md-1">
+                        <% } else { %>
+                            <div class="col-md-6 order-2 order-md-1 d-none">
+                                <% } %>
+                                    <div class="list-group pb-2">
+                                        <li class="list-group-item active">Client Information</li>
+                                        <li class="list-group-item">
+                                            <p class="card-text">This project was completed for
+                                                <%= project.clientName%>. See our work in person or visit them online at
+                                                    <a href="http://<%= project.clientWebsite %>">
+                                                        <%= project.clientWebsite %>
+                                                    </a>
+                                            </p>
+                                        </li>
+                                        <% if (project.projAddressStreet && project.projAddressCity) { %>
+                                            <li class="list-group-item"> <iframe class="card-img border-right" width="350" height="300" frameborder="0" src="https://www.google.com/maps/embed/v1/place?key=<%= process.env.GOOG_API %>&q=<%= project.projAddressStreet.split(' ').join('+'); %>,<%= project.projAddressCity%>,<%= project.projAddressState%>">
+                            </iframe></li>
                                             <% } %>
-                                                <% if (project.image4) { %>
-                                                    <div class="col-6 pb-2" data-toggle="modal" data-target="#image4">
-                                                        <img role="button" src="<%= project.image4 %>" class="pointer img-thumbnail img-fluid border shadow-sm" alt="...">
-                                                    </div>
+                                                <% if (project.customerReview) { %>
+                                                    <li class="list-group-item">
+                                                        <blockquote class="blockquote">
+                                                            <p class="mb-0">
+                                                                <%= project.customerReview%>
+                                                            </p>
+                                                            <footer class="blockquote-footer"><cite title="Source Title"><%=project.clientName%></cite></footer>
+                                                        </blockquote>
+                                                    </li>
                                                     <% } %>
-                    </div>
-                </div>
-            </div>
-            <!-- large screens -->
-            <div class="d-none d-lg-flex row align-items-center mt-3 py-3 border-top border-bottom border-secondary">
-                <% if (project.image1) { %>
-                    <div class="col-3 mx-auto" data-toggle="modal" data-target="#image1">
-                        <img role="button" src="<%= project.image1 %>" class="img-thumbnail img-fluid border shadow-sm" alt="...">
-                    </div>
-                    <% } %>
-                        <% if (project.image2) { %>
-                            <div class="col-3 mx-auto" data-toggle="modal" data-target="#image2">
-                                <img role="button" src="<%= project.image2 %>" class="img-thumbnail img-fluid border shadow-sm" alt="...">
-                            </div>
-                            <% } %>
-                                <% if (project.image3) { %>
-                                    <div class="col-3 mx-auto" data-toggle="modal" data-target="#image3">
-                                        <img role="button" src="<%= project.image3 %>" class="img-thumbnail img-fluid border shadow-sm" alt="...">
                                     </div>
-                                    <% } %>
-                                        <% if (project.image4) { %>
-                                            <div class="col-3 mx-auto" data-toggle="modal" data-target="#image4">
-                                                <img role="button" src="<%= project.image4 %>" class="img-thumbnail img-fluid border shadow-sm" alt="...">
-                                            </div>
-                                            <% } %>
-            </div>
+                            </div>
 
-            <div>
-                <% project.images.forEach(function(image) {%>
-                    <img src="<%= image.url%>" alt="uploaded image" width="200px">
-                    <%});%>
-            </div>
+                            <!-- images -->
+                            <div class="col-md-6 order-1 order-md-2">
+                                <div class="row align-items-start justify-content-center">
+                                    <div class="col-lg-12 pb-2" data-toggle="modal" data-target="#image0">
+                                        <img role="button" src="<%= project.images[0].url %>" class="img-thumbnail img-fluid border shadow-sm" alt="...">
+                                    </div>
+                                </div>
+                                <!-- images for small screens -->
+                                <div class="d-lg-none row align-items-start justify-content-center">
+                                    <% project.images.slice(1).forEach(function(image, i) {%>
+                                        <div class="col" data-toggle="modal" data-target="#image<%= i+1 %>">
+                                            <img role="button" src="<%= image.url%>" class="img-thumbnail img-fluid border shadow-sm" alt="...">
+                                        </div>
+                                        <%  }); %>
+                                </div>
+                            </div>
+                    </div>
+                    <!-- images for large screen -->
+                    <div class="d-none d-lg-flex row align-items-center mt-3 py-3 border-top border-bottom border-secondary">
+                        <% project.images.slice(1).forEach(function(image, i) {%>
+                            <div class="col" data-toggle="modal" data-target="#image<%= i+1 %>">
+                                <img role="button" src="<%= image.url%>" class="img-thumbnail img-fluid border shadow-sm" alt="...">
+                            </div>
+                            <% }); %>
+                    </div>
 
-            <!-- Modals -->
-            <div class="modal fade" id="image" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
-                <div class="modal-dialog modal-lg" data-dismiss="modal" aria-label="Close">
-                    <div class="modal-content">
-                        <div class="modal-body">
-                            <img src="<%= project.image %>" class="img-fluid border shadow-sm" alt="...">
+                    <!-- Modals -->
+                    <% project.images.forEach(function(image, i) {%>
+                        <div class="modal fade" id="image<%= i %>" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+                            <div class="modal-dialog modal-lg" data-dismiss="modal" aria-label="Close">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <img src="<%= image.url%>" class="img-fluid border shadow-sm w-100" alt="...">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal fade" id="image1" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
-                <div class="modal-dialog modal-lg" data-dismiss="modal" aria-label="Close">
-                    <div class="modal-content">
-                        <div class="modal-body">
-                            <img src="<%= project.image1 %>" class="img-fluid border shadow-sm" alt="...">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal fade" id="image2" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
-                <div class="modal-dialog modal-lg" data-dismiss="modal" aria-label="Close">
-                    <div class="modal-content">
-                        <div class="modal-body">
-                            <img src="<%= project.image2 %>" class="img-fluid border shadow-sm" alt="...">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal fade" id="image3" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
-                <div class="modal-dialog modal-lg" data-dismiss="modal" aria-label="Close">
-                    <div class="modal-content">
-                        <div class="modal-body">
-                            <img src="<%= project.image3 %>" class="img-fluid border shadow-sm" alt="...">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal fade" id="image4" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
-                <div class="modal-dialog modal-lg" data-dismiss="modal" aria-label="Close">
-                    <div class="modal-content">
-                        <div class="modal-body">
-                            <img src="<%= project.image4 %>" class="img-fluid border shadow-sm" alt="...">
-                        </div>
-                    </div>
-                </div>
-            </div>
+                        <%});%>
 
-            <!-- text -->
-
-            <div class="lead my-3">
-                <div class="lead">
-                    <p><strong>
+                            <div class="lead my-3">
+                                <div class="lead">
+                                    <p><strong>
                         <%= project.description %></strong>
-                    </p>
-                    <p>
-                        <%= project.details %>
-                    </p>
-                    <blockquote class="blockquote">
-                        <p class="mb-0">
-                            <%= project.customerReview%>
-                        </p>
-                        <footer class="blockquote-footer"><cite title="Source Title"><%=project.clientName%></cite></footer>
-                    </blockquote>
-                    <% if (project.collaborators){ %>
-                        <p>
-                            This project was completed with the help of
-                            <a href="http://<%=project.collaboratorWebsite%>">
-                                <%=project.collaborators%>
-                            </a>.
-                        </p>
-                        <% } %>
-                </div>
+                                    </p>
+                                    <p>
+                                        <%= project.details %>
+                                    </p>
+                                    <% if (project.type == "Residential" || project.type == "Art"){ %>
+                                        <blockquote class="blockquote">
+                                            <p class="mb-0">
+                                                <%= project.customerReview%>
+                                            </p>
+                                            <footer class="blockquote-footer"><cite title="Source Title"><%=project.clientName%></cite></footer>
+                                        </blockquote>
+                                        <% } %>
+                                            <% if (project.collaborators){ %>
+                                                <p>
+                                                    This project was completed with the help of
+                                                    <a href="http://<%=project.collaboratorWebsite%>">
+                                                        <%=project.collaborators%>
+                                                    </a>.
+                                                </p>
+                                                <% } %>
+                                </div>
+                            </div>
             </div>
-    </div>
 
-    <% } %>
-        <div class="p-5">
-            <% if (currentUser)  { %>
-                <a href="/projects/<%= project.id %>/edit" class="btn btn-warning btn-block">EDIT POST</a>
-                <% } %>
-        </div>
+            <div class="p-5">
+                <% if (currentUser)  { %>
+                    <a href="/projects/<%= project.id %>/edit" class="btn btn-warning btn-block">EDIT POST</a>
+                    <% } %>
+            </div>
 
         </div>
 

@@ -7,7 +7,7 @@ var projectSchema = new Schema({
     title: String,
     images: [{
         url: String,
-        public_id: String
+        public_id: String,
     }],
     description: String,
     details: String,
@@ -16,9 +16,10 @@ var projectSchema = new Schema({
     clientContactPhone: String,
     clientContactEmail: String,
     clientWebsite: String,
-    projLocation: String,
-    projLat: Number,
-    projLon: Number,
+    projAddressStreet: String,
+    projAddressCity: String,
+    projAddressState: String,
+    projAddressZip: String,
     dateStarted: Date,
     dateCompleted: Date,
     customerReview: String,

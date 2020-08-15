@@ -1,10 +1,5 @@
 const Project = require('../models/project');
-const cloudinary = require('cloudinary')
-cloudinary.config({
-    cloud_name: 'dggpi9vlg',
-    api_key: process.env.CLOUDINARY_API_KEY,
-    api_secret: process.env.CLOUDINARY_API_SECRET
-})
+const { cloudinary } = require('../cloudinary');
 
 module.exports = {
 
@@ -26,14 +21,13 @@ module.exports = {
 
     // create new projects
     async projectCreate(req, res, next) {
-        req.body.project.images = []
+        req.body.project.images = [];
         for (const file of req.files) {
-            let image = await cloudinary.v2.uploader.upload(file.path);
             req.body.project.images.push({
-                url: image.secure_url,
-                public_id: image.public_id
-            })
-        }
+                url: file.secure_url,
+                public_id: file.public_id
+            });
+        };
         let project = await Project.create(req.body.project);
         res.redirect(`/projects/${project.id}`);
     },
@@ -67,17 +61,16 @@ module.exports = {
                     }
                 }
             }
-        }
+        };
         // upload any new images
         if (req.files) {
             for (const file of req.files) {
-                let image = await cloudinary.v2.uploader.upload(file.path);
                 project.images.push({
-                    url: image.secure_url,
-                    public_id: image.public_id
+                    url: file.secure_url,
+                    public_id: file.public_id
                 });
             }
-        }
+        };
         project.title = req.body.project.title;
         project.type = req.body.project.type;
         project.description = req.body.project.description;
@@ -87,9 +80,10 @@ module.exports = {
         project.clientContactPhone = req.body.project.clientContactPhone;
         project.clientContactEmail = req.body.project.clientContactEmail;
         project.clientWebsite = req.body.project.clientWebsite;
-        project.projLocation = req.body.project.projLocation;
-        project.projLat = req.body.project.ProjLat;
-        project.projLon = req.body.project.ProjLon;
+        project.projAddressStreet = req.body.project.projAddressStreet;
+        project.projAddressCity = req.body.project.projAddressCity;
+        project.projAddressState = req.body.project.projAddressState;
+        project.projAddressZip = req.body.project.projAddressZip;
         project.dateStarted = req.body.project.dateStarted;
         project.dateCompleted = req.body.project.dateCompleted;
         project.customerReview = req.body.project.customerReview;

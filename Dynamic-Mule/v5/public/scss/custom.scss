@@ -1,5 +1,40 @@
 // Your variable overrides
+$primary: #647b86;
+$secondary: #eeeceb;
+$info: #647b86;
+$success: #5aa561;
+$card-bg: #eeeceb;
+$card-cap-bg: #647b86;
+$card-cap-color: #eeeceb;
+$card-border-color: rgba(black, .400);
+$link-hover-decoration: none;
+$list-group-active-bg: #647b86;
+$navbar-light-color: rgba($primary, 1) !default;
+$navbar-light-hover-color: rgba($primary, .7) !default;
+$navbar-light-active-color: rgba($primary, 1) !default;
+$navbar-light-disabled-color: rgba($primary, .3) !default;
+$light: $secondary;
 // My custom css
+@mixin transitionEase {
+    transition: all 0.3s ease-in-out;
+}
+
+@mixin transitionFade {
+    transition: all 0.3 ease;
+}
+
+.badge-secondary {
+    color: rgba($primary, 1) !important;
+}
+
+.footerBG {
+    background-color: #eeeceb;
+}
+
+.card-link {
+    color: $info;
+}
+
 .navbar-nav.navbar-center {
     position: absolute;
     left: 50%;
@@ -38,5 +73,139 @@ h4.border-success {
     margin-bottom: 2rem;
 }
 
+.navbar-brand {
+    font-family: 'Comfortaa', cursive;
+    font-weight: 700;
+}
+
+.home {
+    &-logo {
+        font-family: 'Comfortaa', cursive;
+        font-weight: 700;
+        // border-left: 2px solid whitesmoke;
+        // border-right: 2px solid whitesmoke;
+        height: 80vh;
+        max-width: 1330px;
+        padding-top: 23.5vh;
+        margin: auto;
+        overflow: hidden;
+        align-items: center;
+        text-align: center;
+        background: url(/imgs/bar1.png) center top;
+        // background-size: cover;
+        // linear-gradient(to left, rgba($secondary, 0.4), rgba($secondary, 0.1)),
+        background-repeat: no-repeat;
+        h2 {
+            font-size: 1.5rem;
+            color: $secondary;
+            // text-shadow: whitesmoke 1px 0 10px;
+        }
+        p {
+            color: $secondary;
+        }
+    }
+    &-name {
+        font-size: 4.5rem;
+        padding-bottom: 1rem;
+        margin-bottom: 1rem;
+        color: $secondary;
+        // text-shadow: whitesmoke 1px 0 5px;
+        // border-bottom: 2px solid setTextColor($primaryColor);
+        &-last {
+            color: #647b86;
+            // text-shadow: whitesmoke 1px 0 5px;
+            font-weight: 700;
+        }
+    }
+    &-body {
+        background-color: #647b86;
+    }
+}
+
+.jumbo-container {
+    background-color: rgba($primary, .3);
+}
+
+.social-icons {
+    width: 400px;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    font-size: 1.75rem;
+}
+
+#indexLinks {
+    max-width: 1330px;
+    margin: 0 auto;
+    // background-color: whitesmoke;
+    // border-left: 2px solid whitesmoke;
+    // border-right: 2px solid whitesmoke;
+    // display: flex;
+    // flex-direction: row;
+}
+
+.thumbnail-res {
+    background: linear-gradient(to left, rgba($secondary, 0.4), rgba($secondary, 0.1)), url(/imgs/hinges.jpeg) center;
+    background-size: cover;
+}
+
+.thumbnail-res:hover {
+    text-decoration: none;
+    color: lighten($card-cap-bg, 20);
+    background: url(/imgs/hinges.jpeg) center;
+    background-size: cover;
+}
+
+.thumbnail-comm {
+    background: linear-gradient(to left, rgba($secondary, 0.4), rgba($secondary, 0.1)), url(/imgs/bench2.jpg) center;
+    background-size: cover;
+}
+
+.thumbnail-comm:hover {
+    text-decoration: none;
+    color: lighten($card-cap-bg, 20);
+    background: url(/imgs/bench2.jpg) center;
+    background-size: cover;
+}
+
+.thumbnail-art {
+    background: linear-gradient(to left, rgba($secondary, 0.4), rgba($secondary, 0.1)), url(/imgs/art.jpg) center;
+    background-size: cover;
+}
+
+.thumbnail-art:hover {
+    text-decoration: none;
+    color: lighten($card-cap-bg, 20);
+    background: url(/imgs/art.jpg) center;
+    background-size: cover;
+}
+
+.caption {
+    color: black;
+    text-shadow: whitesmoke 1px 0 5px;
+}
+
 // Bootstrap and its default variables
 @import "../../node_modules/bootstrap/scss/bootstrap";
+$link-color2: $secondary;
+$link-hover-color2: darken($link-color2, 15%) !default;
+.btn-link2 {
+    font-weight: $font-weight-normal;
+    color: $link-color2;
+    text-decoration: $link-decoration;
+    @include hover() {
+        color: $link-hover-color2;
+        text-decoration: $link-hover-decoration;
+    }
+    &:focus,
+    &.focus {
+        text-decoration: $link-hover-decoration;
+    }
+    &:disabled,
+    &.disabled {
+        color: $btn-link-disabled-color;
+        pointer-events: none;
+    }
+    // No need for an active state here
+}

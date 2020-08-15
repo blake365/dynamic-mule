@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const multer = require('multer')
-const upload = multer({ 'dest': 'uploads/' });
-const { asyncErrorHandler } = require("../middleware");
+const { cloudinary, storage } = require('../cloudinary');
+const upload = multer({ storage });
+const { asyncErrorHandler, isLoggedIn } = require("../middleware");
 const {
     projectIndex,
     projectNew,
@@ -17,25 +18,20 @@ const {
 // get projects index  /projects
 router.get('/', asyncErrorHandler(projectIndex));
 
-router.get('/new', projectNew);
+router.get('/new', isLoggedIn, projectNew);
 
-router.post('/', upload.array('images', 5), asyncErrorHandler(projectCreate));
+router.post('/', isLoggedIn, upload.array('images', 5), asyncErrorHandler(projectCreate));
 
-router.get("/dashboard", asyncErrorHandler(projectDashboard));
+router.get("/dashboard", isLoggedIn, asyncErrorHandler(projectDashboard));
 
 router.get('/:id', asyncErrorHandler(projectShow));
 
-router.get('/:id/edit', asyncErrorHandler(projectEdit));
+router.get('/:id/edit', isLoggedIn, asyncErrorHandler(projectEdit));
 
-router.put('/:id', upload.array('images', 5), asyncErrorHandler(projectUpdate));
+router.put('/:id', isLoggedIn, upload.array('images', 5), asyncErrorHandler(projectUpdate));
 
-router.delete('/:id', asyncErrorHandler(projectDestroy));
+router.delete('/:id', isLoggedIn, asyncErrorHandler(projectDestroy));
 
-function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated()) {
-        return next();
-    }
-    res.redirect("/login")
-}
+
 
 module.exports = router;
