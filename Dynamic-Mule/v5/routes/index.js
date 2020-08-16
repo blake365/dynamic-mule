@@ -1,33 +1,45 @@
 const express = require('express');
 const router = express.Router();
-const { getRegister, postRegister, postLogin, getLogout } = require('../controllers');
-const { asyncErrorHandler, isAllowed } = require('../middleware');
+const {
+    landingPage,
+    getRegister,
+    postRegister,
+    getLogin,
+    postLogin,
+    getLogout,
+    getProfile,
+    updateProfile
+} = require('../controllers');
+const {
+    asyncErrorHandler,
+    isAllowed,
+    isLoggedIn,
+    isValidPassword,
+    changePassword
+} = require('../middleware');
 
 /* GET home page. */
-router.get('/', (req, res, next) => {
-    res.render('index');
-});
+router.get('/', landingPage);
 
 // GET /register
 router.get('/register', getRegister);
 
 router.post('/register', isAllowed, asyncErrorHandler(postRegister));
 
-router.get('/login', (req, res, next) => {
-    res.render('login');
-});
+router.get('/login', getLogin);
 
 router.post('/login', asyncErrorHandler(postLogin));
 
 router.get('/logout', getLogout);
 
-router.get('/profile', (req, res, next) => {
-    res.send('GET /profile');
-});
+router.get('/profile', isLoggedIn, asyncErrorHandler(getProfile));
 
-router.put('/profile/:user_id', (req, res, next) => {
-    res.send('PUT /profile/:user_id');
-});
+router.put('/profile',
+    isLoggedIn,
+    asyncErrorHandler(isValidPassword),
+    asyncErrorHandler(changePassword),
+    asyncErrorHandler(updateProfile)
+);
 
 // password reset routes
 router.get('/forgot', (req, res, next) => {

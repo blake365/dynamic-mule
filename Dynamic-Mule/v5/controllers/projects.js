@@ -29,6 +29,7 @@ module.exports = {
             });
         };
         let project = await Project.create(req.body.project);
+        req.flash('success', 'Project Created');
         res.redirect(`/projects/${project.id}`);
     },
     // show projects
@@ -103,6 +104,7 @@ module.exports = {
             await cloudinary.v2.uploader.destroy(image.public_id);
         }
         await project.remove();
+        req.flash('success', 'Project deleted!');
         res.redirect('/projects');
     }
 }

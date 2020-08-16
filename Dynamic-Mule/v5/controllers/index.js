@@ -1,7 +1,14 @@
 const User = require('../models/user')
-const passport = require('passport')
+const Project = require('../models/project')
+const passport = require('passport');
+const util = require('util');
+
 
 module.exports = {
+
+    landingPage(req, res, next) {
+        res.render('index', { title: 'Mule Studio - Home' });
+    },
 
     getRegister(req, res, next) {
         res.render('register', { title: 'Register', username: '', email: '' });
@@ -9,11 +16,7 @@ module.exports = {
 
     // post regiser method
     async postRegister(req, res, next) {
-        // const newUser = new User(req.body);
-        // if (req.body.regCode === process.env.REG_CODE) {
-        //     newUser.isAllowed = true;
-        // }
-        // if (user.isAllowed === true) {
+        // middleware should catch if the registration code is entered and only then allow the registration to continue. 
         try {
             const user = await User.register(new User(req.body), req.body.password)
             req.login(user, function(err) {
@@ -21,10 +24,6 @@ module.exports = {
                 req.flash('success', `Welcome, ${user.username}`);
                 res.redirect('/projects');
             });
-            // } else if (newUser.isAllowed === false) {
-            //     const { username, email } = req.body;
-            //     req.flash("error", "You must have a registration code to create an account");
-            //     res.render('register', { title: 'Register', username, email });
         } catch (err) {
             const { username, email } = req.body;
             let error = err.message;
@@ -35,6 +34,12 @@ module.exports = {
         }
 
     },
+    // GET /login
+    getLogin(req, res, next) {
+        if (req.isAuthenticated()) return res.redirect('/');
+        if (req.query.returnTo) req.session.redirectTo = req.headers.referer;
+        res.render('login', { title: 'Login' });
+    },
 
     // post login method
     async postLogin(req, res, next) {
@@ -43,7 +48,7 @@ module.exports = {
         if (!user && error) return next(error);
         req.login(user, function(err) {
             if (err) return next(err);
-            req.session.success = `Welcome back, ${username}`;
+            req.flash('success', `Welcome back, ${username}`);
             const redirectUrl = req.session.redirectTo || '/projects';
             delete req.session.redirectTo;
             res.redirect(redirectUrl);
@@ -55,5 +60,32 @@ module.exports = {
         req.logout();
         req.flash("success", "Logged Out")
         res.redirect('/projects');
+    },
+
+    async getProfile(req, res, next) {
+        const projects = await Project.find().where('author').equals(req.user._id).limit(10).exec();
+        res.render('profile', { projects });
+    },
+
+    async updateProfile(req, res, next) {
+        // destructure username and email from req.body
+        const {
+            username,
+            email
+        } = req.body;
+        // destructure user object from res.locals
+        const { user } = res.locals;
+        // check if username or email need to be updated
+        if (username) user.username = username;
+        if (email) user.email = email;
+        // save the updated user to the database
+        await user.save();
+        // promsify req.login
+        const login = util.promisify(req.login.bind(req));
+        // log the user back in with new info
+        await login(user);
+        // redirect to /profile with a success flash message
+        req.session.success = 'Profile successfully updated!';
+        res.redirect('/profile');
     }
 }
