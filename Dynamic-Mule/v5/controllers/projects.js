@@ -1,4 +1,5 @@
 const Project = require('../models/project');
+const User = require('../models/user');
 const { cloudinary } = require('../cloudinary');
 
 module.exports = {
@@ -6,7 +7,8 @@ module.exports = {
     // projectss index
     async projectIndex(req, res, next) {
         let projects = await Project.find({});
-        res.render('home', { projects })
+        let users = await User.find({});
+        res.render('home', { projects, users })
     },
 
     // submit new projects

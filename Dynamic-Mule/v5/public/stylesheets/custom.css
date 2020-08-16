@@ -1,3 +1,7 @@
+.profile-image {
+  width: 100px;
+}
+
 .badge-secondary {
   color: #647b86 !important;
 }
@@ -18,6 +22,11 @@
 
 cite {
   font-size: 1.5rem;
+}
+
+.about-image {
+  display: flex;
+  max-height: 600px;
 }
 
 ul.lead li {
@@ -63,7 +72,7 @@ h4.border-success {
   overflow: hidden;
   align-items: center;
   text-align: center;
-  background: url(/imgs/bar1.png) center top;
+  background: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)), url(/imgs/bar1.png) center top;
   background-repeat: no-repeat;
 }
 
@@ -111,43 +120,47 @@ h4.border-success {
 }
 
 .thumbnail-res {
-  background: linear-gradient(to left, rgba(238, 236, 235, 0.4), rgba(238, 236, 235, 0.1)), url(/imgs/hinges.jpeg) center;
+  background: url(/imgs/hinges.jpeg) center;
   background-size: cover;
+  opacity: 0.7;
+  transition: 0.3s;
 }
 
 .thumbnail-res:hover {
   text-decoration: none;
   color: #9bacb5;
-  background: url(/imgs/hinges.jpeg) center;
-  background-size: cover;
+  opacity: 1;
 }
 
 .thumbnail-comm {
-  background: linear-gradient(to left, rgba(238, 236, 235, 0.4), rgba(238, 236, 235, 0.1)), url(/imgs/bench2.jpg) center;
+  background: url(/imgs/bench2.jpg) center;
   background-size: cover;
+  opacity: 0.7;
+  transition: 0.3s;
 }
 
 .thumbnail-comm:hover {
   text-decoration: none;
   color: #9bacb5;
-  background: url(/imgs/bench2.jpg) center;
-  background-size: cover;
+  opacity: 1;
 }
 
 .thumbnail-art {
-  background: linear-gradient(to left, rgba(238, 236, 235, 0.4), rgba(238, 236, 235, 0.1)), url(/imgs/art.jpg) center;
+  background: url(/imgs/art.jpg) center;
   background-size: cover;
+  opacity: 0.7;
+  transition: 0.3s;
 }
 
 .thumbnail-art:hover {
   text-decoration: none;
   color: #9bacb5;
-  background: url(/imgs/art.jpg) center;
-  background-size: cover;
+  opacity: 1;
 }
 
 .caption {
   color: black;
+  opacity: 1;
   text-shadow: whitesmoke 1px 0 5px;
 }
 

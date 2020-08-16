@@ -49,6 +49,11 @@ cite {
     font-size: 1.5rem;
 }
 
+.about-image {
+    display: flex;
+    max-height: 600px;
+}
+
 ul.lead li {
     font-size: 1.25rem;
     list-style: none;
@@ -95,8 +100,7 @@ h4.border-success {
         overflow: hidden;
         align-items: center;
         text-align: center;
-        background: url(/imgs/bar1.png) center top;
-        // background-size: cover;
+        background: linear-gradient( rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)), url(/imgs/bar1.png) center top; // background-size: cover;
         // linear-gradient(to left, rgba($secondary, 0.4), rgba($secondary, 0.1)),
         background-repeat: no-repeat;
         h2 {
@@ -142,7 +146,6 @@ h4.border-success {
 #indexLinks {
     max-width: 1330px;
     margin: 0 auto;
-    // background-color: whitesmoke;
     // border-left: 2px solid whitesmoke;
     // border-right: 2px solid whitesmoke;
     // display: flex;
@@ -150,43 +153,54 @@ h4.border-success {
 }
 
 .thumbnail-res {
-    background: linear-gradient(to left, rgba($secondary, 0.4), rgba($secondary, 0.1)), url(/imgs/hinges.jpeg) center;
+    background: url(/imgs/hinges.jpeg) center;
+    // background-color: $secondary;
     background-size: cover;
+    opacity: 0.7;
+    transition: 0.3s;
 }
 
 .thumbnail-res:hover {
     text-decoration: none;
     color: lighten($card-cap-bg, 20);
-    background: url(/imgs/hinges.jpeg) center;
-    background-size: cover;
+    // background: url(/imgs/hinges.jpeg) center;
+    // background-size: cover;
+    opacity: 1;
 }
 
 .thumbnail-comm {
-    background: linear-gradient(to left, rgba($secondary, 0.4), rgba($secondary, 0.1)), url(/imgs/bench2.jpg) center;
+    background: url(/imgs/bench2.jpg) center;
     background-size: cover;
+    opacity: 0.7;
+    transition: 0.3s;
 }
 
 .thumbnail-comm:hover {
     text-decoration: none;
     color: lighten($card-cap-bg, 20);
-    background: url(/imgs/bench2.jpg) center;
-    background-size: cover;
+    // background: url(/imgs/bench.jpeg) center;
+    // background-size: cover;
+    opacity: 1;
 }
 
 .thumbnail-art {
-    background: linear-gradient(to left, rgba($secondary, 0.4), rgba($secondary, 0.1)), url(/imgs/art.jpg) center;
+    background: url(/imgs/art.jpg) center;
     background-size: cover;
+    opacity: 0.7;
+    transition: 0.3s;
 }
 
 .thumbnail-art:hover {
     text-decoration: none;
     color: lighten($card-cap-bg, 20);
-    background: url(/imgs/art.jpg) center;
-    background-size: cover;
+    // background: url(/imgs/art.jpg) center;
+    // background-size: cover;
+    opacity: 1;
 }
 
 .caption {
     color: black;
+    opacity: 1;
     text-shadow: whitesmoke 1px 0 5px;
 }
 

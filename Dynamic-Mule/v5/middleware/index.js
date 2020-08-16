@@ -14,15 +14,15 @@ const middleware = {
         res.redirect('/login')
     },
     isAllowed: async(req, res, next) => {
-        const allowed = new User(req.body);
-        if (req.body.regCode === process.env.REG_CODE) {
-            allowed.isAllowed = true;
+        const { username, regCode } = req.body;
+        console.log(regCode);
+        console.log(username);
+        if (regCode === process.env.REG_CODE) {
             return next();
         } else {
-            const { username, email } = req.body;
             req.flash('error', "You must have a registration code to create an account");
-            res.render('register', { title: 'Register', username, email })
-        }
+            res.render('register', { title: 'Register', username });
+        };
     },
     isValidPassword: async(req, res, next) => {
         const { user } = await User.authenticate()(req.user.username, req.body.currentPassword)

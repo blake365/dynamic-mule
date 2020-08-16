@@ -6,22 +6,53 @@
             <div class="card ">
                 <h1 class="card-header">Sign Up</h1>
                 <div class="card-body">
-                    <form action="/register" method="post" enctype="multipart/form-data">
+                    <form action="/register" method="post">
+                        <div class="form-group">
+                            <label for="regCode">Registration Code:</label>
+                            <input class="form-control" type="text" name="regCode" id="regCode" placeholder="Registration code" required></div>
                         <div class="form-group">
                             <label for="username">Username:</label>
                             <input class="form-control" type="text" name="username" id="username" placeholder="username" value="<%= username %>" required></div>
                         <div class="form-group">
-                            <label for="email">Email:</label>
-                            <input class="form-control" id="email" type="email" name="email" placeholder="email" value="<%= email %>" required></div>
-                        <div class="form-group">
                             <label for="password">Password:</label>
                             <input class="form-control" id="password" type="password" name="password" placeholder="password" required></div>
+                        <div class="alert alert-success">The following items and a profile picture can be added or updated in the profile section once registered</div>
                         <div class="form-group">
+                            <label class="form-check-label" for="display">Display in "Who We Are": </label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="display" id="display" value="true">
+                                <label class=" form-check-label" for="display">Display </label>
+                            </div>
+                            <div class='form-check'>
+                                <input class="form-check-input" type="radio" name="display" id="display-false" value="false">
+                                <label class="form-check-label" for="display-false">Don't Display </label>
+
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Display Name:</label>
+                            <input class="form-control" type="text" id="name" name="name" placeholder="your name">
+                        </div>
+                        <div class="form-group">
+                            <label for="bio">Bio: <small>Use html markup to create paragraphs, bold, italics, etc.</small></label>
+                            <textarea class="form-control" type="text" id="bio" name="bio" cols="20" rows="5"></textarea>
+                        </div>
+                        <!-- <div class="form-group">
                             <label for="image">Profile Image:</label>
-                            <input class="" type="file" name="image" id="image"></div>
-                        <div class="form-group">
-                            <label for="regCode">Registration Code:</label>
-                            <input class="form-control" type="text" name="regCode" id="regCode" placeholder="Registration code" required></div>
+                            <input class="" type="file" name="image" id="image"></div> -->
+                        <div class="row">
+                            <div class="form-group col">
+                                <label for="email">Email:</label>
+                                <input class="form-control" type="email" id="email" name="email" placeholder="email">
+                            </div>
+                            <div class="form-group col">
+                                <label for="phone">Phone Number:</label>
+                                <input class="form-control" type="tel" id="phone" name="phone" placeholder="phone">
+                            </div>
+                        </div>
+
+
                         <button type="submit" class="btn btn-lg btn-success">Register</button>
                     </form>
                 </div>

@@ -3,7 +3,11 @@
         <h1 class="mt-5 text-center">
             <%= currentUser.username %>'s Profile</h1>
     </div>
-
+    <div class="container">
+        <div class="alert alert-dark">
+            Preview of "Who We Are" section. Images will alternate right and left sides.
+        </div>
+    </div>
     <!-- about us preview -->
     <div class="row justify-content-center align-items-center mb-4">
         <div class="col-lg-5 col-10 content text-left p-2 lead ">
@@ -14,7 +18,7 @@
 
         </div>
         <div class="col-lg-5 col-10">
-            <img class="img-fluid border border-info mx-auto shadow-sm" src="<%= currentUser.image.secure_url %>">
+            <img class="img-fluid border border-info mx-auto shadow-sm about-image" src="<%= currentUser.image.secure_url %>">
         </div>
     </div>
 
@@ -26,6 +30,19 @@
                 <form action="/profile?_method=PUT" method="POST" enctype="multipart/form-data">
                     <div class="card card-body mb-2">
                         <h3 class="text-center">Update info for "Who We Are"</h3>
+                        <div class="form-group">
+                            <label class="form-check-label" for="display">Display in "Who We Are": </label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="display" id="display" value="true">
+                                <label class=" form-check-label" for="display">Display </label>
+                            </div>
+                            <div class='form-check'>
+                                <input class="form-check-input" type="radio" name="display" id="display-false" value="false">
+                                <label class="form-check-label" for="display-false">Don't Display </label>
+
+                            </div>
+
+                        </div>
                         <div class="form-group">
                             <label for="name">Display Name:</label>
                             <input class="form-control" type="text" id="name" name="name" placeholder="your name" value="<%= currentUser.name %>">

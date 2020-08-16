@@ -13,7 +13,7 @@ module.exports = {
     },
 
     getRegister(req, res, next) {
-        res.render('register', { title: 'Register', username: '', email: '' });
+        res.render('register', { title: 'Register', username: '' });
     },
 
     // post regiser method
@@ -35,12 +35,12 @@ module.exports = {
             });
         } catch (err) {
             deleteProfileImage(req);
-            const { username, email } = req.body;
+            const { username } = req.body;
             let error = err.message;
-            if (error.includes('duplicate') && error.includes('index: email_1 dup key')) {
-                error = 'A user with the given email is already registered';
-            }
-            res.render('register', { title: 'Register', username, email, error });
+            // if (error.includes('duplicate') && error.includes('index: email_1 dup key')) {
+            //     error = 'A user with the given email is already registered';
+            // }
+            res.render('register', { title: 'Register', username, error });
         }
 
     },
@@ -86,6 +86,7 @@ module.exports = {
             name,
             phone,
             address,
+            display
         } = req.body;
         // destructure user object from res.locals
         const { user } = res.locals;
@@ -96,6 +97,7 @@ module.exports = {
         if (name) user.name = name;
         if (phone) user.phone = phone;
         if (address) user.address = address;
+        if (display) user.display = display;
         if (req.file) {
             if (user.image.public_id) await cloudinary.v2.uploader.destroy(user.image.public_id);
             const { secure_url, public_id } = req.file;

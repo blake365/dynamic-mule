@@ -20,7 +20,7 @@ const { runInNewContext } = require('vm');
 app = express();
 
 // Start DB connection with backup db
-var url = process.env.DATABASEURL || "mongodb://localhost:27017/moose_project";
+var url = process.env.DATABASEURL || "mongodb://localhost:27017/moose_v5";
 
 mongoose.connect(url, {
         useNewUrlParser: true,
