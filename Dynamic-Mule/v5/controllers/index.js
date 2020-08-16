@@ -2,6 +2,8 @@ const User = require('../models/user')
 const Project = require('../models/project')
 const passport = require('passport');
 const util = require('util');
+const { cloudinary } = require('../cloudinary');
+const { deleteProfileImage } = require('../middleware');
 
 
 module.exports = {
@@ -18,6 +20,13 @@ module.exports = {
     async postRegister(req, res, next) {
         // middleware should catch if the registration code is entered and only then allow the registration to continue. 
         try {
+            if (req.file) {
+                const { secure_url, public_id } = req.file;
+                req.body.image = {
+                    secure_url,
+                    public_id
+                };
+            }
             const user = await User.register(new User(req.body), req.body.password)
             req.login(user, function(err) {
                 if (err) return next(err);
@@ -25,6 +34,7 @@ module.exports = {
                 res.redirect('/projects');
             });
         } catch (err) {
+            deleteProfileImage(req);
             const { username, email } = req.body;
             let error = err.message;
             if (error.includes('duplicate') && error.includes('index: email_1 dup key')) {
@@ -71,13 +81,26 @@ module.exports = {
         // destructure username and email from req.body
         const {
             username,
-            email
+            email,
+            bio,
+            name,
+            phone,
+            address,
         } = req.body;
         // destructure user object from res.locals
         const { user } = res.locals;
         // check if username or email need to be updated
         if (username) user.username = username;
         if (email) user.email = email;
+        if (bio) user.bio = bio;
+        if (name) user.name = name;
+        if (phone) user.phone = phone;
+        if (address) user.address = address;
+        if (req.file) {
+            if (user.image.public_id) await cloudinary.v2.uploader.destroy(user.image.public_id);
+            const { secure_url, public_id } = req.file;
+            user.image = { secure_url, public_id };
+        }
         // save the updated user to the database
         await user.save();
         // promsify req.login
@@ -85,7 +108,7 @@ module.exports = {
         // log the user back in with new info
         await login(user);
         // redirect to /profile with a success flash message
-        req.session.success = 'Profile successfully updated!';
+        req.flash('success', 'Profile successfully updated!');
         res.redirect('/profile');
     }
 }

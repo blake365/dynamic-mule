@@ -23,6 +23,10 @@ $light: $secondary;
     transition: all 0.3 ease;
 }
 
+.profile-image {
+    width: 100px;
+}
+
 .badge-secondary {
     color: rgba($primary, 1) !important;
 }
